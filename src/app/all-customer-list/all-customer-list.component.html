@@ -1,0 +1,264 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item">
+      <i class="ace-icon fa fa-home home-icon" style="margin-right: 10px; color: #004C8C; text-decoration: none;"></i><a
+        href="/set">Home&#160;</a>
+    </li>
+
+    <li class="active" style="color: #004C8C;">
+      <i class="fa-solid fa-chevron-right"></i>
+      Customer Service&#160;
+      
+    </li>
+    <li class="breadcrumb-item active" style="color: #3BB161;" aria-current="page"><i class="fa-solid fa-chevron-right"></i>&#160;Customers List</li>
+  </ol>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <b>
+                <h5 style="color: #004C8C; margin-top: -5px;">
+                  Customers List
+                </h5>
+              </b>
+            </div>
+            <div class="container box pb-2" style="border-radius: 4px; margin-top: 0px; background-color: #fff;">
+              <!-- <div class="row"> -->
+
+              <form [formGroup]="employeeForm" class="col-md-12 col-sm-12 col-xs-12 mt-1">
+                <div class="row">
+                  <div class="form-floating  col-lg-3 col-md-10 col-11 m-lg-0">
+
+                    <select formControlName="location" class="form-select mt-2">
+
+                      <option value="">Select Status</option>
+                      <option value="1001">Hadapsar</option>
+
+                      <option value="1010">Solapur</option>
+
+                      <option value="1020">Daund</option>
+
+                      <option value="1040">Katraj</option>
+
+                      <option value="1030">Phaltan</option>
+
+                      <option value="1050">Sinhgad Road</option>
+
+                      <option value="1060">Ahmednagar</option>
+
+                      <option value="1070">Satara</option>
+
+                      <option value="1080">Lohegaon</option>
+
+                      <option value="1090">Bhosari</option>
+
+                      <option value="1100">Pimpri</option>
+
+                      <option value="1550">Kunjirwadi</option>
+
+                      <option value="1110">Chinchwad</option>
+
+                      <option value="1120">Kolhapur</option>
+
+                      <option value="1140">Nagpur</option>
+
+                      <option value="1130">Ratnagiri</option>
+
+                      <option value="1150">Aurangabad</option>
+
+                      <option value="1160">Nashik</option>
+
+                      <option value="1170">Navi Mumbai</option>
+
+                      <option value="1180">Mumbai</option>
+
+                      <option value="1190">Panaji</option>
+
+                      <option value="1200">Ahmadabad</option>
+
+                      <option value="1230">Chennai</option>
+
+                      <option value="1220">Amaravati</option>
+
+                      <option value="1210">Bengaluru</option>
+
+                      <option value="1240">Kochi</option>
+
+                      <option value="1250">Hyderabad</option>
+
+                      <option value="1260">Ranchi</option>
+
+                      <option value="1270">Bhopal</option>
+
+                      <option value="1280">Patna</option>
+
+                      <option value="1290">Raipur</option>
+
+                      <option value="1300">Jaipur</option>
+
+                      <option value="1310">Kolkata</option>
+
+                      <option value="1320">Lucknow</option>
+
+                      <option value="1330">Chandigarh</option>
+
+                      <option value="1340">Bhubaneshwar</option>
+
+                      <option value="1350">Agartala</option>
+
+                      <option value="1360">Gangtok</option>
+
+                      <option value="1370">Kohima</option>
+
+                      <option value="1380">Aizawl</option>
+
+                      <option value="1390">Shillong</option>
+
+                      <option value="1400">Imphal</option>
+
+                      <option value="1410">Dehradun</option>
+
+                      <option value="1420">Shimla</option>
+
+                      <option value="1430">Gurgoan</option>
+
+                      <option value="1440">Guwahati</option>
+
+                      <option value="1450">Itanagar</option>
+
+                      <option value="1460">Andaman</option>
+
+                      <option value="1470">Daman</option>
+
+                      <option value="1480">Jammu</option>
+
+                      <option value="1490">Kashmir</option>
+
+                      <option value="1500">Andrott</option>
+
+                      <option value="1510">Leh</option>
+
+                      <option value="1520">Puducherry</option>
+
+                      <option value="1530">Connaught Place</option>
+
+                      <option value="1540">Indore</option>
+
+                    </select>
+                    <label for="location">Select Branch :</label>
+                  </div>
+
+
+
+                  <div class="form-floating col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+
+                    <input type="date" formControlName="department" class="form-control mt-2">
+                    <label for="department">From Date</label>
+                  </div>
+
+                  <div class="form-floating col-lg-3  col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <input type="date" formControlName="department" class="form-control mt-2">
+                    <label for="department">To Date</label>
+                  </div>
+
+                  <div class="text-end col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <button type="button" style="border-radius: 20px;" class="btn btn-info "><i
+                        class="ace-icon fa fa-check bigger-110"></i>
+                      Submit</button>
+
+                    <button type="button" style="border-radius: 20px;" class="btn btn-info  m-lg-3 m-4 ">
+                      <i class="ace-icon fa fa-undo bigger-110"></i>
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+
+            <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer mt-3">
+              <div class="row">
+                <div class="col-lg-9 col-md-8">
+                  <div class="dataTables_length" id="branch_datatable_length">
+                    <p>Show
+                      <select name="branch_datatable_length" (ngModelChange)="refreshCountries()"
+                        style="border-radius: 20px; border: 1px solid #3BB161;" [(ngModel)]="pageSize" aria-controls="branch_datatable">
+                        <!-- [(ngModel)]="resultsPerPage" -->
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="25">25</option>
+                        <option [ngValue]="50">50</option>
+                        <option [ngValue]="100">100</option>
+                      </select> Entries
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                  <div class="dataTables_filter offset-lg-4" id="branch_datatable_filter">
+                    <input type="text" [(ngModel)]="SearchText" (input)="applyFilter()"
+                      style="border-radius: 20px; height: 30px;" placeholder="Search" aria-controls="branch_datatable">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <table class="table rounded-table">
+              <thead>
+                <tr _ngcontent-ng-c3957511202="" role="row">
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Customer ID: activate to sort column descending" aria-sort="ascending"
+                    class="sorting_asc" style="width: 163px;">Customer
+                    ID</th>
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Account No: activate to sort column ascending" class="sorting"
+                    style="width: 164px;">Account No </th>
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Company Name: activate to sort column ascending" class="sorting"
+                    style="width: 382px;">Company Name</th>
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Customer Name: activate to sort column ascending" class="sorting"
+                    style="width: 387px;">Customer Name</th>
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Branch: activate to sort column ascending" class="sorting"
+                    style="width: 221px;">Branch</th>
+                  <th _ngcontent-ng-c3957511202="" tabindex="0" aria-controls="customer_datatable" rowspan="1"
+                    colspan="1" aria-label="Action: activate to sort column ascending" class="sorting"
+                    style="width: 130px;">Action</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let data of allCust  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                  <td>{{data.customerId}}</td>
+                  <td>{{data.accountNo}}</td>
+                  <td>{{data.companyName}}</td>
+                  <td>{{data.customerFullName}}</td>
+                  <td>{{data.branch}}</td>
+
+                  <td>
+                    <button class="btn btn-info" routerLink="/set/view-customer-details-new" style="border-radius: 20px;" (click)="edit(data.tId)">
+                      View
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between p-2">
+              <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                aria-live="polite">
+                Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                  collectionSize}} of {{dataarray.length}} entries </div>
+                  <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                    aria-label="Default pagination"></ngb-pagination>
+              </div>
+            </div>
+          </div>
+        </div>

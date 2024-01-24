@@ -1,0 +1,84 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon"
+                style="margin-right: 10px; color: #004C8C; text-decoration: none;"></i><a href="/set">Home&#160;</a>
+        </li>
+
+        <li class="active" style="color: #004C8C;">
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="/set/alltechsupport">&#160;Tech Support&#160;</a>
+           
+        </li>
+        <li class="active" style="color: #3bb161;" aria-current="page"> <i class="fa-solid fa-chevron-right"></i>&#160;Add Tech Support&#160;</li>
+    </ol>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+           
+            <!-- <div class="page-content"> -->
+                <div class="page-header">
+                    <b>
+                        <h5 style="color: #004C8C; margin-top: -5px;">
+                            Tech Support
+                        </h5>
+                    </b>
+                </div>
+                <div ng-if="true" class="ng-scope">
+                    <button type="button" routerLink="/set/alltechsupport" class="btn btn-info"
+                        style="float: right; border-radius: 20px; margin-top: -35px;">View Tickets</button>
+
+                </div>
+                <form [formGroup]="addTicket" class="col-md-12 col-sm-12 col-xs-12 box"
+                    style="background-color: #fff; border-radius: 5px; padding: 30px; margin-top: 20px;">
+
+                    <div class="form-group row">
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                            <div class="form-floating ml-2  mb-2">
+                                <select class="form-select " formControlName="ticketTo" id="status"
+                                    [(ngModel)]="newTicket.ticketTo" required="">
+                                    <option value="">Select</option>
+                                    <option value="Tech Support">Tech Support</option>
+                                </select>
+                                <label for="ticketTo" class="col-lg-2 col-4   col-form-label mr-5">To*</label>
+                            </div>
+
+                            <div class="form-floating  mb-2">
+                                <textarea formControlName="description" [(ngModel)]="newTicket.description"
+                                    class="form-control"></textarea>
+                                <label for="description"
+                                    class="col-lg-2 col-4   col-form-label mr-5">Description*</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="subject" [(ngModel)]="newTicket.subject"
+                                    placeholder="Subject" class="form-control" id="complianceDueDate">
+                                <label for="subject" class="col-lg-2 col-4   col-form-label mr-5">Subject:</label>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4 align-middle">
+                            
+                            <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                                (click)="onSubmit()" type="submit">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Submit
+                            </button>
+
+                            <button class="btn-info m-lg-4 m-4 w-25" type="Reset"
+                                style="height: 40px; border-radius: 2rem;">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

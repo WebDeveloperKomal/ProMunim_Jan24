@@ -1,0 +1,115 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a
+                href="/set">Home&#160;</a>
+            <i class="fa-solid fa-chevron-right"></i>
+        </li>
+
+        <li class=" active" style="color: #004C8C;" aria-current="page">
+
+            <a href="/set/alltid">&#160;TID Generation &#160; </a>
+
+
+        </li>
+
+        <li class="active" style="color: #3BB161;" aria-current="page"><i
+                class="fa-solid fa-chevron-right"></i>&#160;View All TID</li>
+    </ol>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="page-content">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-6 col-6 ">
+                            <!-- class="fw-bold" -->
+                            <b>
+                                <h5 style="color: #004C8C; margin-top: -5px;">TID Generation</h5>
+                            </b>
+                        </div>
+                        <div class="col-md-6 col-6 text-end ">
+                            <button type="button" routerLink="/set/alltid" style="border-radius: 20px;  margin-top: -5px;"
+                                class="btn btn-info">
+                                View All TID
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container" style=" margin-top: -5px;">
+                    <div class="row">
+                        <form [formGroup]="complianceForm" style="background-color: #fff; border-radius: 10px;"
+                            class="col-md-12 col-sm-12 col-xs-12 mt-3">
+
+                            <div class="form-group row p-3">
+
+                                <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                                    <div class="form-floating ml-2  mb-2">
+                                        <select class="form-select" formControlName="customerId"
+                                            [(ngModel)]="tid.customerId" id="status">
+                                            <option value="">Select</option>
+                                            <option *ngFor=" let cus of tempcusList " value={{cus.tempCustId}}>
+                                                {{cus.tempCustFullName}}</option>
+                                        </select>
+                                        <label for="customerId" class="col-lg-2 col-4  ml-2">Temporary Customer
+                                            Name</label>
+                                    </div>
+                                    <div class="form-floating mb-2">
+                                        <select class="form-select" [(ngModel)]="tid.status" formControlName="status"
+                                            id="status" required="">
+                                            <option value="">Select</option>
+                                            <option value="Running">Running</option>
+                                        </select>
+                                        <label for="status" class="col-lg-2 col-4  ml-2">Status</label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+
+                                    <div class="form-floating  mb-2">
+                                        <input type="text" formControlName="aofNo" [(ngModel)]="tid.aofNo"
+                                            placeholder="AOF No" class="form-control" id="complianceDueDate">
+                                        <label for="aofNo" class="col-lg-2 col-4   col-form-label mr-5">AOF No.</label>
+                                    </div>
+
+                                    <div class="form-floating mb-2">
+                                        <select class="form-select" [(ngModel)]="tid.courierId"
+                                            formControlName="courierId" id="status" required="">
+                                            <option value="">----------- Select ----------- </option>
+                                            <option value="1">Tech Support</option>
+                                        </select>
+                                        <label for="courierId" class="col-lg-2 col-4  ml-2">Courier</label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="text-center align-middle">
+                                <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                                    (click)="onSubmit()" routerLink="/set/" type="submit">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    Submit
+                                </button>
+
+                                <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                    Reset
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

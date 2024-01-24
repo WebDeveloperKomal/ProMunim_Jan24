@@ -1,0 +1,134 @@
+/* .page-header {
+    margin: 0 0 12px;
+    border-bottom: 1px dotted #E2E2E2;
+    padding-bottom: 16px;
+    padding-top: 7px
+} */
+
+.page-header h1 {
+    margin: 0 8px;
+    font-size: 24px;
+    font-weight: lighter;
+    color: #2679B5
+}
+
+.page-header h1 small {
+    margin: 0 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #8089A0
+}
+
+.search {
+    font-size: 14px;
+}
+
+.breadcrumb {
+    background-color: #F5F5F5;
+    border: 1px solid #E5E5E5;
+    border-width: 0 0 1px;
+    position: relative;
+    z-index: auto;
+    border-bottom: 1px solid #E5E5E5;
+    background-color: #F5F5F5;
+    min-height: 41px;
+    line-height: 40px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+    border-radius: 0
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    background-color: transparent;
+    line-height: 1.42857143;
+    background-color: #fff;
+    padding: 5px;
+    padding: 25px;
+    font-size: 14px;
+}
+
+.table td,
+.table th {
+    background-color: #fff !important
+}
+
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #ddd !important
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd
+}
+
+.table>tbody+tbody {
+    border-top: 2px solid #ddd
+}
+
+.table-bordered,
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+    border: 1px solid #ddd
+}
+
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+    border-bottom-width: 2px
+}
+
+.dataTables_wrapper {
+    font-size: 13px;
+}
+
+.dataTables_paginate a.paginate_button {
+    margin: 0 10px;
+    color: #8089A0;
+    text-decoration: none;
+    font-size: 14px;
+}
+label {
+    color:  #004c8c !important;
+    font-weight: 600;
+    width: auto;
+    left: 15px;
+    top: 5px;
+}
+
+select ~ label{
+    color:  #004c8c;
+    font-weight: 600;
+    width: auto;
+    left: 10px;
+    top: 5px;
+}
+input{
+    font-size: small;
+}
+ th,td{
+    color: #004C8C;
+ }

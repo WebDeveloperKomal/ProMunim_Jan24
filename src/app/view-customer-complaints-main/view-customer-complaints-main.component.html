@@ -1,0 +1,137 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item">
+      <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a href="/set">Home
+        &#160;</a>
+      <i class="fa-solid fa-chevron-right"></i>
+    </li>
+
+    <li class=" active" style="color: #004C8C;" aria-current="page"><a href="/set/allcomplaintsmain">
+        &#160; Customer Complaints&#160;</a></li>
+    <li class=" active" style="color: #3BB161;" aria-current="page">
+      <i class="fa-solid fa-chevron-right"></i>&#160;View Customer Complaints&#160;
+    </li>
+  </ol>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container">
+
+        <div class="row ">
+          <div class="col-md-6 col-6 ">
+            <!-- class="fw-bold" -->
+            <b>
+            <h5 style="color: #004C8C;  margin-top: -5px;">Complaint Details</h5>
+          </b>
+          </div>
+          <div class="col-md-6 col-6 text-end ">
+            <button type="button" routerLink="/set/allcomplaintsmain" style="border-radius: 20px;" class="btn btn-info">
+              View All Complaints
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container box">
+      <div id="complaint_Info" class="col-md-10 col-sm-10 col-xs-10 p-4"
+        style="border: 1px solid darkolivegreen; font-size: 14px; border-radius: 8px;color: #333; background-color: #fff; margin-top: 10px;">
+        <div class="row col-lg-5 col-md-12 ">
+          <div class="col-md-3 ">
+            <p>Ticket Id </p>
+          </div>
+          <div class="col-lg-6 col-md-12" style="color: #004C8C;">
+            <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#CDE-699-63750 </p>
+          </div>
+        </div>
+
+        <div class="row col-lg-7 col-md-12">
+          <div class="col-lg-4 col-md-12">
+            <p>Company Name </p>
+          </div>
+          <div class="col-lg-8 col-md-12" style="color: #004C8C;">
+            <p class="ng-binding">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OM SAINATH CONSTRUCTION </p>
+          </div>
+        </div>
+
+        <!-- <div class="row"> -->
+
+
+        <div class="row col-lg-3 col-md-12">
+          <div class="col-lg-2 col-md-6">
+            <p>Date </p>
+          </div>
+          <div class="col-lg-8 col-md-6" style="color: #004C8C;">
+            <p class="ng-binding">:&nbsp;&nbsp;2018-08-02</p>
+          </div>
+        </div>
+        <!-- </div> -->
+
+        <div class="row col-md-12">
+          <div class="col-lg-3 col-md-6">
+            <p>Subject</p>
+          </div>
+          <div class="col-lg-8 col-md-10" style="color: #004C8C;">
+            <p class="ng-binding">&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tentative statement delayed
+            </p>
+          </div>
+        </div>
+
+        <div class="row col-lg-9 col-md-12">
+          <div class="col-lg-3 col-md-12">
+            <p>Change Status : </p>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <select class="form-select">
+              <option value="Open">Open</option>
+              <option value="Close">Close</option>
+            </select>
+          </div>
+          <div class="col-md-3 mt-lg-0 mt-md-2 mt-3">
+            <button type="button" style="border-radius: 20px;" ng-click="changeComplaintStatus()"
+              class="btn btn-info ">Submit</button>
+          </div>
+        </div>
+
+        <div class="row col-lg-11 col-md-12 col-12" id="reply_user" style="background-color: #fff; margin-top: 35px;">
+          <div id="replay" class="col-md-12 col-sm-12 col-xs-12" style="color: #004C8C;">
+            <p class="">customer need tentative statement on urgent basis, he had given document few days back</p>
+          </div>
+          <div class="col-lg-9 col-md-12 col-sm-9 col-xs-9 p-2">
+            <p><i class="ng-binding">SAMEER SHANTARAM KULKARNI (S12440)</i></p>
+
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-3 col-xs-3" id="techDate" style="color: #3BB161;">
+            <p><b>Date :&nbsp;&nbsp;2017-05-13</b></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <h5 class="col-md-8 col-sm-8 col-xs-8" style="margin-top:10px; color: #004C8C;">Add Replay :</h5>
+    <div id="add_replay" class="col-lg-11 col-md-12 col-12">
+      <form class="form-horizontal ng-pristine ng-valid" method="post">
+        <input class="form-control ng-pristine ng-untouched ng-valid" ng-model="techSupportReplay.ticketId"
+          style="display:none">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-floating form-group">
+            <textarea class="form-control ng-pristine ng-untouched ng-valid" path="replay"
+              ng-model="techSupportReplay.replay" rows="5"></textarea>
+              <label for="">Reply</label>
+          </div>
+        </div>
+        <div class="mb-5 p-4 " style="float: right;">
+          <button type="button" class="btn btn-info offset-md-9" style="margin-right: 10px; border-radius: 20px; ">Submit</button>
+          <button type="button" class="btn btn-info" style="margin-right: 10px; border-radius: 20px; ">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

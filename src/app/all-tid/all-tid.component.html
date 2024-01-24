@@ -1,0 +1,190 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item">
+      <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a href="/set">Home
+        &#160;</a>
+    </li>
+
+    <li class=" active" style="color: #3bb161;" aria-current="page">
+      <i class="fa-solid fa-chevron-right"></i>
+      TID Generation
+    </li>
+  </ol>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <b>
+                <h5 style="color: #004C8C; margin-top: -5px;">
+                  TID Generation
+                </h5>
+              </b>
+            </div>
+
+
+            <div class="container box pb-2 "
+              style="border-radius: 4px; margin-top: 0px; background-color: white;">
+
+              <form [formGroup]="tidForm" class=" col-md-12 col-sm-12 col-xs-12 mt-1"
+                style="margin-top: -20px; border-radius: 10px;">
+                <div class="row">
+
+                  <div class="form-floating m-3 col-lg-3 col-md-10 col-11 m-lg-0">
+                    <select formControlName="branch" class="form-select border-secondary m-2 ">
+                      <option value="">Select Branch</option>
+                      <option *ngFor="let branch of branches" value={{branch.branchName}}>{{branch.branchName}}</option>
+                    </select>
+                    <label for="Select Branch" class="col-lg-2 col-4 col-form-label">Select Branch </label>
+                  </div>
+
+
+
+                  <div class="form-floating col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group mb-2">
+                    <input type="date" formControlName="fromdate" placeholder="From Date"
+                      class="form-control border-secondary m-2" id="complianceName">
+                    <label for="From Date" class="col-lg-2 col-4 col-form-label mr-5">From Date</label>
+                  </div>
+
+                  <!-- <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                  <label for="department" style="color: #004C8C;">From Date</label>
+                  <input type="date"  formControlName="fromdate" class="form-control">
+                </div> -->
+
+                  <div class="form-floating col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group mb-2">
+                    <input type="date" formControlName="todate" placeholder="To Date"
+                      class="form-control border-secondary m-2" id="complianceName">
+                    <label for="From Date" class="col-lg-2 col-4 col-form-label mr-5">To Date</label>
+                  </div>
+
+                  <!-- <div class="col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                  <label for="department" style="color: #004C8C;">To Date</label>
+                  <input type="date" formControlName="todate" class="form-control">
+                </div> -->
+
+                  <div class="text-end col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <button type="button" style="border-radius: 20px;" class="btn btn-info"><i
+                        class="ace-icon fa fa-check bigger-110" (click)="onSubmit()"></i>
+                      Submit</button>
+
+                    <!-- <button type="button" style="border-radius: 20px;" class="btn btn-info"><i
+                      class="ace-icon fa fa-check bigger-110"></i>
+                    Cancal</button> -->
+
+                    <button type="button" style="border-radius: 20px;" class="btn btn-info  m-lg-3 m-4">
+                      <i class="ace-icon fa fa-undo bigger-110"></i>
+                      Cancal
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+
+          
+            <div class="row mt-3">
+              <div class="col-10 col-md-11">
+                <div class="offset-md-7 offset-lg-9 ">
+                  <div class="dataTables_filter" id="branch_datatable_filter">
+                    <p>
+                      <input type="text" style="border-radius: 20px; height: 36px;" [(ngModel)]="SearchText"
+                        (input)="applyFilter()" placeholder="Search..." aria-controls="branch_datatable">
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-1">
+                <button *ngIf="inserttid" id="bt1" type="button" routerLink="/set/add-tids" class="btn btn-info"
+                  style="border-radius: 20px; margin-left: -100px;">
+                  Add TID</button>
+              </div>
+            </div>
+
+          <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer" style="margin-top: -35px;">
+            <div class="row">
+              <div class="col-lg-9 col-md-8">
+                <div class="dataTables_length" id="branch_datatable_length">
+                  <p>Show
+                    <select name="branch_datatable_length" style="border-radius: 10px; border: 1px solid #3BB161;"
+                      (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize" aria-controls="branch_datatable">
+                      <!-- [(ngModel)]="resultsPerPage" -->
+                      <option [ngValue]="10">10</option>
+                      <option [ngValue]="25">25</option>
+                      <option [ngValue]="50">50</option>
+                      <option [ngValue]="100">100</option>
+                    </select> Entries
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <table class="table rounded-table">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>TID</th>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Courier Address</th>
+                <th>EMP ID</th>
+                <th>Branch</th>
+                <!-- <c:if test="${updatetid||deletetid}">	    -->
+                <th *ngIf="view || updatetid || deletetid">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let data of TIDList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                <td>{{index+1}}</td>
+                <td>{{data.tID}}</td>
+                <td>{{data.customerName}}</td>
+                <td>{{data.dateOfGeneration}}</td>
+
+                <td>{{data.status}}</td>
+
+                <td>{{data.courierAdd}}</td>
+                <td>{{data.masterEmpId}}</td>
+                <td>{{data.branchName}}</td>
+                <td *ngIf="view || updatetid || deletetid">
+                  <!-- <button class="btn btn-xs" style="font-size: 13px; background-color:#004C8C!important; color: white;" routerLink="/" >
+                                          <i class="ace-icon fa fa-info bigger-120"></i>
+                                      </button>&nbsp;&nbsp; -->
+                  <button *ngIf="updatetid" class="btn btn-xs"
+                    style="margin-right: 10px; font-size: 13px;"
+                    (click)="edit(data.tID)" routerLink="/set/tidgeneration">
+                    <i class="fa-solid fa-pen-to-square fa-lg" style=" color: #3BB161;"></i>
+                  </button>
+                  <button *ngIf="deletetid" class="btn btn-xs"
+                    style=" font-size: 13px;"
+                    (click)="delete(data.tID)">
+                    <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
+                    <i class="fa-solid fa-trash-can" style="color:#DC3545"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-between p-2">
+            <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+              aria-live="polite">
+              Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                pageSize}} of {{TIDList.length}} entries </div>
+                <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                  aria-label="Default pagination"></ngb-pagination>
+
+            </div>
+            <!-- </div> -->
+
+            <!-- </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>

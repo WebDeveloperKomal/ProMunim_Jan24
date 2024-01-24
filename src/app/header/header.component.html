@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light " style=" align-items: stretch; font-family: 'Open Sans';">
+
+  <div class="col-lg-8 col-md-5 col-12 d-flex">
+    <i class="fa-solid fa-bars mt-4 ml-2" (click)="toggleSideNav()" style="margin-left: 20px;"></i>
+    <a class="navbar-brand" href="#">
+      <img src="assets/pro.png" alt="" width="100" style="margin-left: 20px;"
+        class="d-inline-block align-text-top f_logo ml-4 ">
+    </a>
+  </div>
+
+  <div *ngIf="isLoggedin" class="col-lg-4 col-md-7 col-12 mt-1" style="background-color: #3BB161; display: flex;  ">
+    <a class="navbar-brand" href="#">
+      <img src="assets\download.jfif" width="42" style="border-radius: 50%;">
+    </a>
+    <span class="mt-2" style="font-family: 'Comfortaa';color: white;  display: inline-block;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    text-align: left;vertical-align: top;line-height: 15px;position: relative;top: 6px; font-size: 15px;">
+      <small>Welcome </small><br>{{user.firstName}} {{user.middleName}} {{user.lastName}}
+    </span>
+    <div class="dropdown custom-dropdown mt-3 ml-3">
+      <button type="button" class="btn dropdown-toggle " data-bs-toggle="dropdown"
+        style="color: white;font-size: 20px;">
+      </button>
+      <ul class="dropdown-menu justify-content-center">
+        <li><a class="dropdown-item " routerLink="/set/user-profile">Profile</a></li>
+        <li><a class="dropdown-item" routerLink="/set/change-password">Change Password</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

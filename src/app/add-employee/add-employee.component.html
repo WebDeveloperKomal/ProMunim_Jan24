@@ -1,0 +1,224 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item" style="color: #004C8C;">
+            <i class="ace-icon fa fa-home home-icon" style="margin-right: 10px;  color: #004C8C;"></i><a
+                href="/set">Home&#160;</a>
+        </li>
+
+        <li class="active" style="color: #004C8C;">
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="/set/employee"> Employee&#160;</a>
+
+        </li>
+        <li class="breadcrumb-item active" style="color: #3BB161;" aria-current="page"><i
+                class="fa-solid fa-chevron-right"></i> Add Employee</li>
+    </ol>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <!-- <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Employee</li>
+                </ol>
+            </nav> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <b>
+                                <h5 style="color: #004C8C; margin-top: -5px;">
+                                    Employee
+                                </h5>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" routerLink="/set/employee" class="btn btn-info"
+                    style="float: right; border-radius: 20px; margin-top: -35px;">View
+                    Employee</button>
+
+                <form [formGroup]="addnewcustomer" class="col-md-12 col-sm-12 col-xs-12 mt-2"
+                    style="background-color: #fff; border-radius: 4px;">
+
+                    <div class="form-group row" style="padding: 30px 60px 0px;">
+
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+
+                            <div class="form-floating  ml-2  mb-2">
+                                <input type="text" formControlName="firstName"  [(ngModel)]="newEmployee.firstName"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="firstName" class="col-lg-2 col-4   col-form-label mr-5">First Name:*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="email" formControlName="lastName" [(ngModel)]="newEmployee.lastName"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="lastName" class="col-lg-2 col-4   col-form-label mr-5">Last Name:
+                                    *</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="date" formControlName="joiningDate" [(ngModel)]="newEmployee.joiningDate"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="joiningDate" class="col-lg-2 col-4   col-form-label mr-5">Date Of
+                                    Joining:
+                                    *</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <select formControlName="mainDepId" [(ngModel)]="newEmployee.mainDepId"
+                                    class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let mainDep of mainDeps" value={{mainDep.id}}>
+                                        {{mainDep.mainDepName}}
+                                    </option>
+                                </select>
+                                <label for="mainDepId" class="col-lg-2 col-4  ml-2">Select Main
+                                    Department*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <select formControlName="roleId" [(ngModel)]="newEmployee.roleId" class="form-select">
+                                    <option value="1">-----------------------Select------------------------
+                                    </option>
+                                    <option *ngFor="let role of roles" value={{role.roleId}}>{{role.roleName}}
+                                    </option>
+                                </select>
+                                <label for="roleId" class="col-lg-2 col-4 col-form-label ml-2">Select Role
+                                    Name*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <select formControlName="assignedBranches" [(ngModel)]="newEmployee.assignedBranches"
+                                    class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let branch of branches" value={{branch.branchName}}>
+                                        {{branch.branchName}}</option>
+
+                                </select>
+                                <label for="assignedBranches" class="col-lg-2 col-4 col-form-label ml-2">Assigned
+                                    Branches*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="email" [(ngModel)]="newEmployee.email"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="email" class="col-lg-2 col-4   col-form-label mr-5">UserName / Email:
+                                    *</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="proUserId" [(ngModel)]="newEmployee.proUserId"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="proUserId" class="col-lg-2 col-4   col-form-label mr-5">Profile UserId:
+                                    *</label>
+                            </div>
+                            
+                        </div>
+
+
+
+
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                            
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="middleName" [(ngModel)]="newEmployee.middleName"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="middleName" class="col-lg-2 col-4   col-form-label mr-5">Middle Name:
+                                    *</label>
+                            </div>   
+                            
+                            <div class="form-floating mb-2">
+                                <input type="date" formControlName="dob" [(ngModel)]="newEmployee.dob"
+                                    class="form-control" placeholder="" id="complianceName">
+                                <label for="dob" class="col-lg-2 col-4   col-form-label mr-5">Date Of Birth:
+                                    *</label>
+                            </div>
+
+                            
+                            <div class="form-floating mb-2">
+                                <select class="form-select" formControlName="branchId"
+                                    [(ngModel)]="newEmployee.branchId">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let branch of branches" value={{branch.branchId}}>
+                                        {{branch.branchName}}
+                                    </option>
+                                    <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{
+                                    data.branchname }}
+                                </option> -->
+                                </select>
+                                <label for="branchId" class="col-lg-2 col-4 col-form-label ml-2">Select
+                                    Location*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <select formControlName="depId" [(ngModel)]="newEmployee.depId" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option *ngFor="let dep of deps" value={{dep.departmentID}}>
+                                        {{dep.departmentName}}
+                                    </option>
+                                </select>
+                                <label for="depId" class="col-lg-2 col-4 col-form-label ml-2">Select
+                                    Department*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <select formControlName="rmCode" [(ngModel)]="newEmployee.rmCode" class="form-select">
+                                    <option value="">-----------------------Select------------------------ </option>
+                                    <option value="HOT">HOT </option>
+                                    <option value="WARM">WARM </option>
+                                    <option value="COLD">COLD </option>
+                                </select>
+                                <label for="rmCode" class="col-lg-2 col-4 col-form-label ml-2">Select RM
+                                    Code*</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="contactNo" placeholder=""
+                                    [(ngModel)]="newEmployee.contactNo" class="form-control" id="complianceName">
+                                <label for="contactNo" class="col-lg-2 col-4   col-form-label mr-5">Contact Number:
+                                    *</label>
+                            </div>
+
+                            <div class="form-floating mb-2">
+                                <input type="text" formControlName="password" [(ngModel)]="newEmployee.password"
+                                    placeholder="" class="form-control" id="complianceName">
+                                <label for="password" class="col-lg-2 col-4   col-form-label mr-5">Password:
+                                    *</label>
+                            </div>
+
+                            
+                            <div class="col-8 mt-1">
+                                <img [src]="url" alt="">
+                                <input type="file" id="lname" (change)="onFileSelected($event)" name="lname">
+                                <label for="pincode" class="col-lg-2 col-4 col-form-label mr-5">Select Photo</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4 align-middle">
+                        <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                            (click)="onSubmit()" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Cancal
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div>
+      </div>
+    </div> -->

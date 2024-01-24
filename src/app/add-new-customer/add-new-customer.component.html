@@ -1,0 +1,253 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a
+                href="/set">Home &#160;</a>
+            <i class="fa-solid fa-chevron-right"></i>
+        </li>
+
+        <li class=" active" style="color: #004C8C;" aria-current="page"><a href="/set/allnewcustomer">
+
+                &#160; New Customer&#160;</a></li>
+        <li class=" active" style="color: #3BB161;" aria-current="page">
+            <i class="fa-solid fa-chevron-right"></i>&#160;Add New Customer&#160;
+        </li>
+    </ol>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <div class="container">
+
+                <div class="row ">
+                    <div class="col-md-6 col-6 ">
+                        <b>
+                            <h5 style="color: #004C8C;">New Customer</h5>
+                        </b>
+                    </div>
+                    <div class="col-md-6 col-6 text-end ">
+                        <button type="button" routerLink="/set/allnewcustomer" style="border-radius: 20px;"
+                            class="btn btn-info">
+                            All Customers
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="container mt-3" style="background-color: white; border-radius: 5px;">
+                <div class="row">
+                    <div class="col">
+                        <div class="m-4">
+                            <div class="row line">
+                                <div class="col-md-6 col-6">
+                                    <h6 style="color: #004C8C;">Add New Customer</h6>
+                                </div>
+
+                            </div>
+
+                            <form [formGroup]="addnewcustomer" class="col-md-12 col-sm-12 col-xs-12 mt-3">
+                                <div class="form-group row">
+
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                                        <div class="form-floating ml-2  mb-2">
+                                            <input type="text" formControlName="companyName"
+                                                [(ngModel)]="newCust.companyName" placeholder="Company
+                                            Name:" class="form-control border-secondary px3 " id="complianceName">
+                                            <label for="companyName"
+                                                class="col-lg-2 col-4   col-form-label mr-5">Company
+                                                Name
+                                            </label>
+                                        </div>
+
+                                        <div class="form-floating  mb-2">
+                                            <input type="email" formControlName="emailId" [(ngModel)]="newCust.emailId"
+                                                placeholder="Email Id" class="form-control border-secondary"
+                                                id="complianceName">
+                                            <label for="emailId" class="col-lg-2 col-4   col-form-label mr-5">Email
+                                                Id</label>
+                                        </div>
+
+                                        <div class="form-floating  mb-2">
+                                            <input type="text" formControlName="altContactNo"
+                                                placeholder="Alternative Contact Number"
+                                                [(ngModel)]="newCust.altContactNo" class="form-control border-secondary"
+                                                id="complianceName">
+                                            <label for="altContactNo"
+                                                class="col-lg-2 col-4   col-form-label mr-5">Alternative
+                                                Contact
+                                                Number</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <input type="text" formControlName="city" [(ngModel)]="newCust.city"
+                                                placeholder="City" class="form-control border-secondary"
+                                                id="complianceName">
+                                            <label for="city" class="col-lg-2 col-4   col-form-label mr-5">City</label>
+                                        </div>
+                                        <!-- <label for="taxLink" class="col-lg-2 col-4 col-form-label ml-2" >Tax Link  :</label> -->
+
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="constitutionOfCompany"
+                                                aria-label="Floating label select example"
+                                                [(ngModel)]="newCust.constitutionOfCompany" id="constitutionOfCompany"
+                                                class="form-select border-secondary">
+                                                <option selected>-----------------------Select------------------------
+                                                </option>
+                                                <option value="PROPRITER">PROPRITER </option>
+                                                <option value="PARTNERSHIP">PARTNERSHIP</option>
+                                                <option value="PVT.LTD.">PVT. LTD.</option>
+                                            </select>
+                                            <label for="constitutionOfCompany" class="col-lg-2 col-4  ml-2">Constitution
+                                                of
+                                                Company</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="natureOfBussiness"
+                                                [(ngModel)]="newCust.natureOfBussiness"
+                                                class="form-select border-secondary">
+                                                <option value="">-----------------------Select------------------------
+                                                </option>
+                                                <option value="Repair & Mainatenance">Repair & Mainatenance</option>
+                                                <option value="Packaging & Printing">Packaging & Printing</option>
+                                                <option value="Fabrication">Fabrication</option>
+                                                <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                        </option> -->
+                                            </select>
+                                            <label for="natureOfBussiness"
+                                                class="col-lg-2 col-4 col-form-label ml-2">Nature
+                                                Of
+                                                Business:</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="leadType" [(ngModel)]="newCust.leadType"
+                                                class="form-select border-secondary">
+                                                <option value="">-----------------------Select------------------------
+                                                </option>
+                                                <option value="HOT">HOT </option>
+                                                <option value="WARM">WARM </option>
+                                                <option value="COLD">COLD </option>
+                                            </select>
+                                            <label for="leadType" class="col-lg-2 col-4 col-form-label ml-2">Lead
+                                                Type:</label>
+                                        </div>
+                                        <div class="form-floating mb-2">
+                                            <select formControlName="productId" [(ngModel)]="newCust.productId"
+                                                class="form-select border-secondary">
+                                                <option value="">-----------------------Select------------------------
+                                                </option>
+                                                <option *ngFor="let product of products" value={{product.productId}}>
+                                                    {{product.productId}} - {{product.productName}}
+                                                    ({{product.minValue}} -
+                                                    {{product.maxValue}})</option>
+                                                <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                        </option> -->
+                                            </select>
+                                            <label for="productId"
+                                                class="col-lg-2 col-4 col-form-label ml-2">Product:</label>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                                        <div class="form-floating  mb-2">
+                                            <input type="text" formControlName="customerFullName"
+                                                placeholder="Full Name:" [(ngModel)]="newCust.customerFullName"
+                                                class="form-control border-secondary" id="complianceName">
+                                            <label for="customerFullName"
+                                                class="col-lg-2 col-4   col-form-label mr-5">Full
+                                                Name</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <input type="text" formControlName="contactNo"
+                                                [(ngModel)]="newCust.contactNo" placeholder="Contact Number"
+                                                class="form-control border-secondary" id="complianceName">
+                                            <label for="contactNo" class="col-lg-2 col-4   col-form-label mr-5">Contact
+                                                Number</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <!-- <div class="col-sm-8"> -->
+                                            <textarea class="form-control border-secondary h-100"
+                                                [(ngModel)]="newCust.address" id="address" placeholder="Address"
+                                                rows="3" formControlName="address" required> </textarea>
+                                            <!-- </div> -->
+                                            <label for="address"
+                                                class="col-lg-2 col-4   col-form-label mr-5">Address</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <input type="text" formControlName="pinCode" [(ngModel)]="newCust.pinCode"
+                                                placeholder="Pincode" class="form-control border-secondary"
+                                                id="complianceName">
+                                            <label for="pinCode"
+                                                class="col-lg-2 col-4   col-form-label mr-5">Pincode</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="segment" [(ngModel)]="newCust.segment" id="segment"
+                                                class="form-select border-secondary"
+                                                aria-label="Floating label select example">
+                                                <option selected>-----------------------Select------------------------
+                                                </option>
+                                                <option value="Service Provider">Service Provider</option>
+                                                <option value="Agriculture Services">Agriculture Services</option>
+                                                <option value="Professional Services">Professional Services</option>
+                                                <!-- <option *ngFor="let data of dataarray" [value]="data.branchname">{{ data.branchname }}
+                                        </option> -->
+                                            </select>
+                                            <label for="segment"
+                                                class="col-lg-2 col-4 col-form-label ml-2">Segment</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="maintainingITR"
+                                                [(ngModel)]="newCust.maintainingITR"
+                                                class="form-select border-secondary">
+                                                <option value="">-----------------------Select------------------------
+                                                </option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO </option>
+                                            </select>
+                                            <label for="maintainingITR"
+                                                class="col-lg-2 col-4 col-form-label ml-2">Maintaining
+                                                ITR:</label>
+                                        </div>
+                                        <div class="form-floating  mb-2">
+                                            <select formControlName="leadStatus" [(ngModel)]="newCust.leadStatus"
+                                                class="form-select border-secondary">
+                                                <option value="">-----------------------Select------------------------
+                                                </option>
+                                                <option value="INTERESTED">INTERESTED </option>
+                                                <option value="NOT INTERESTED">NOT INTERESTED </option>
+                                            </select>
+                                            <label for="leadStatus" class="col-lg-2 col-4 col-form-label ml-2">Lead
+                                                Status:</label>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="text-center mt-4 align-middle">
+                                    <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                                        (click)="onSubmit()" routerLink="/set/" type="submit">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        Submit
+                                    </button>
+
+                                    <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                        Cancal
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div>
+      </div>
+    </div> -->

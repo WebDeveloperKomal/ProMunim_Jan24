@@ -1,0 +1,548 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+            </nav>
+
+
+            <div class="row line">
+                <div class="col-md-6 col-6">
+                    <div class="">
+                        <h1>
+                            Dashboard
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-6 col-6 text-md-end">
+                    <button type="button" routerLink="" class="btn btn-info">
+                        <i class="ace-icon fa fa-cog bigger-110"></i>
+                        Set Dashboard
+                    </button>
+                </div>
+            </div>
+
+
+            <style>
+                @media(max-width:900px){
+                .test{
+                    margin-bottom: 15px!important;
+                }
+            }
+            </style>
+            <div class="row">
+                <!-- <div class="col-xs-12"> -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 test">
+                        <div class="tabbable payment">
+                            <ul class="nav nav-tabs pay_tab">
+                                <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')">Today</a>
+                                </li>
+                                <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')">Month</a>
+                                </li>
+                                <li [class.active]="activeTab === 'tab3'"><a (click)="changeTab('tab3')">Year</a>
+                                </li>
+                                <li [class.active]="activeTab === 'tab4'"><a (click)="changeTab('tab4')">All</a>
+                                </li>
+                            </ul>
+                            <div ng-if="true" class="ng-scope">
+                                <div class="tab-content pay">
+                                    <div class="tab-pane active pay10" [class.active]="activeTab === 'tab1'" id="tab1">
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.todayCust}}</h3>
+                                                <p class="">Customer</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
+                                                <p class="">Portfolio</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab === 'tab2'" id="tab2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.monthCust}}</h3>
+                                                <p class="">Customer</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
+                                                <p class="">Portfolio</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab === 'tab3'" id="tab3">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.yearCust}}</h3>
+                                                <p class="">Customer</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
+                                                <p class="">Portfolio</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane pay10" [class.active]="activeTab === 'tab4'" id="tab4">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.allCust}}</h3>
+                                                <p class="">Customer</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="">{{allCustCounts.portfolio}}</h3>
+                                                <p class="">Portfolio</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="tab-content-footer" routerLink="/set/customerslist" style="color: #004c8f;background-color: white;">More
+                                        info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-6 col-sm-6  test">
+                        <div class="tabbable payment">
+                            <ul class="nav nav-tabs pay_tab">
+                                <li [class.active]="activeTab1 === 'tab5'"><a (click)="changeTab1('tab5')">Today</a>
+                                </li>
+                                <li [class.active]="activeTab1 === 'tab6'"><a (click)="changeTab1('tab6')">Month</a>
+                                </li>
+                                <li [class.active]="activeTab1 === 'tab7'"><a (click)="changeTab1('tab7')">Year</a>
+                                </li>
+                                <li [class.active]="activeTab1 === 'tab8'"><a (click)="changeTab1('tab8')">All</a>
+                                </li>
+                            </ul>
+
+                            <div ng-if="true" class="ng-scope">
+                                <div class="tab-content pay">
+                                    <div class="tab-pane active pay10" [class.active]="activeTab1 === 'tab5'" id="tab5">
+                                        <p>Payments </p>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.todayRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected :  {{totalIPRenew.todayTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection :  {{totalPayInfo.todayTotal}}</div>
+
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab6'" id="tab6">
+                                        <p>Payments </p>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.monthRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.monthTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.monthTotal}}</div>
+
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab7'" id="tab7">
+                                        <p>Payments </p>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.yearRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.yearTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.yearTotal}}</div>
+
+                                    </div>
+                                    <div class="tab-pane pay10" [class.active]="activeTab1 === 'tab8'" id="tab8">
+                                        <p>Payments </p>
+                                        <div style="font-size: 15px;">Total R. V. : {{totalIPRenew.allRenewal}}</div>
+                                        <div style="font-size: 15px;">I. P. Collected : {{totalIPRenew.allTotalIp}}</div>
+                                        <div style="font-size: 15px;">Renewal Collection : {{totalPayInfo.allTotal}}</div>
+
+                                    </div>
+                                    <a class="tab-content-footer" routerLink="/set/alltransactions" style="color: #004c8f;background-color: white;">More
+                                        info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 test">
+                        <div class="tabbable new_customer">
+                            <ul class="nav nav-tabs newcust_tab">
+                                <ul class="nav nav-tabs pay_tab">
+                                    <li [class.active]="activeTab2 === 'tab9'"><a (click)="changeTab2('tab9')">Today</a>
+                                    </li>
+                                    <li [class.active]="activeTab2 === 'tab10'"><a
+                                            (click)="changeTab2('tab10')">Month</a>
+                                    </li>
+                                    <li [class.active]="activeTab2 === 'tab11'"><a
+                                            (click)="changeTab2('tab11')">Year</a>
+                                    </li>
+                                    <li [class.active]="activeTab2 === 'tab12'"><a (click)="changeTab2('tab12')">All</a>
+                                    </li>
+                                </ul>
+                            </ul>
+
+
+
+                            <div ng-if="true" class="ng-scope">
+                                <div class="tab-content pay ">
+                                    <div class="tab-pane active pb-2 pay10" [class.active]="activeTab2 === 'tab9'"
+                                        id="tab9">
+                                        <h3 class="ng-binding">{{allTempCustcounts.todayTempCust}}</h3>
+                                        <div class="newcust">New Customers</div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab10'" id="tab10">
+                                        <h3 class="ng-binding">{{allTempCustcounts.monthTempCust}}</h3>
+                                        <div class="newcust">New Customers</div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab11'" id="tab11">
+                                        <h3 class="ng-binding">{{allTempCustcounts.yearTempCust}}</h3>
+                                        <div class="newcust">New Customers</div>
+                                    </div>
+                                    <div class="tab-pane pay10" [class.active]="activeTab2 === 'tab12'" id="tab12">
+                                        <h3 class="ng-binding">{{allTempCustcounts.allTempCust}}</h3>
+                                        <div class="newcust">New Customers</div>
+                                    </div>
+                                    <a class="tab-content-footer" routerLink="/set/allnewcustomer" style="color: #004c8f;background-color: white; cursor: pointer;">More
+                                        info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6  test">
+                        <div class="tabbable new_customer">
+                            <ul class="nav nav-tabs newcust_tab">
+
+                                <ul class="nav nav-tabs pay_tab">
+                                    <li [class.active]="activeTab3 === 'tab13'"><a
+                                            (click)="changeTab3('tab13')">Today</a>
+                                    </li>
+                                    <li [class.active]="activeTab3 === 'tab14'"><a
+                                            (click)="changeTab3('tab14')">Month</a>
+                                    </li>
+                                    <li [class.active]="activeTab3 === 'tab15'"><a
+                                            (click)="changeTab3('tab15')">Year</a>
+                                    </li>
+                                    <li [class.active]="activeTab3 === 'tab16'"><a (click)="changeTab3('tab16')">All</a>
+                                    </li>
+                                </ul>
+                            </ul>
+
+                            <div ng-if="true" class="ng-scope">
+                                <div class="tab-content pay">
+                                    <div class="tab-pane active pay10 pb-2" [class.active]="activeTab3 === 'tab13'"
+                                        id="tab13">
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.todayTotalVisit}}</h3>
+                                                <p class="mb-0">Total Visits</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.todayTotalLead}}</h3>
+                                                <p class="mb-0">Total Leads</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab3 === 'tab14'" id="tab14">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.monthTotalVisit}}</h3>
+                                                <p>Total Visits</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.monthTotalLead}}</h3>
+                                                <p>Total Leads</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane pay10" [class.active]="activeTab3 === 'tab15'" id="tab15">
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.yearTotalVisit}}</h3>
+                                                <p>Total Visits</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.yearTotalLead}}</h3>
+                                                <p>Total Leads</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane pay10" [class.active]="activeTab3 === 'tab16'" id="tab16">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.allTotalVisit}}</h3>
+                                                <p>Total Visits</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="ng-binding">{{allVisitLeadCounts.allTotalLead}}</h3>
+                                                <p>Total Leads</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="tab-content-footer" routerLink="/set/alldailyvisits" style="color: #004c8f;background-color: white;">More
+                                        info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                <!-- </div> -->
+            </div>
+
+
+
+            <div class="row" style="margin-top:10px;">
+                <!-- <div style="margin-top:10px;"> -->
+
+                    <div class="col-sm-6">
+                        <div class="widget-box" ng-init="getNewsAlert()">
+                            <div class="widget-header widget-header-small">
+                                <p class="widget-title smaller">
+                                    <i class="ace-icon fa fa-bell-o"></i>
+                                    Latest News Alert
+                                </p>
+
+                                <div class="widget-toolbar" style="float: right;">
+                                    <a href="#" data-action="reload" ng-click="getNewsAlert()">
+                                        <i class="ace-icon fa fa-refresh"></i>
+                                    </a>
+                                    <a href="#" data-action="collapse">
+                                        <i class="ace-icon fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main">
+
+                                    <div class="alertbox ng-scope" ng-repeat="na in newsAlertData">
+                                        <p class="alert alert-info"><a href="#" ng-click="" class="ng-binding">Revision
+                                                of Fees for Rural </a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            <br><i class="ins-info ng-binding">Inserted By : SYSTEM ADMIN
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Branch : Hadapsar
+                                                <br>Department : Support - ADMINISTRATIVE &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Date : 2019-11-18
+                                            </i>
+                                        </p>
+
+                                    </div>
+                                    <div class="alertbox ng-scope" ng-repeat="na in newsAlertData">
+                                        <p class="alert alert-info"><a href="#" ng-click="viewAlertDis(na.newsAlertId)"
+                                                class="ng-binding">CRM
+                                                Updation. </a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            <br><i class="ins-info ng-binding">Inserted By : SYSTEM ADMIN
+                                                &nbsp;&nbsp;&nbsp;&nbsp; Branch : Hadapsar
+                                                <br>Department : Support - ADMINISTRATIVE &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Date : 2018-06-19
+                                            </i>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="widget-box">
+                            <div class="widget-header widget-header-small">
+                                <p class="widget-title smaller">
+                                    <i class="ace-icon fa fa-comment blue"></i>
+                                    Latest Customer Interaction
+                                </p>
+                                <div class="widget-toolbar" style="float: right;">
+                                    <!-- ngIf: true --><a data-action="reload" ng-if="true"
+                                        (click)="allLatestInteractions()" class="ng-scope">
+                                        <i class="ace-icon fa fa-refresh"></i>
+                                    </a><!-- end ngIf: true -->
+                                    <!-- ngIf: false -->
+                                    <a  data-action="collapse">
+                                        <i class="ace-icon fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <!-- ngIf: true -->
+                                    <div ng-if="true" ng-init="getAllLatestFollowUp1()" class="ng-scope">
+                                        <!-- ngRepeat: fu in followupData -->
+                                        <div *ngFor="let interaction of followUp" class="alertbox alert alert-success ng-scope"
+                                            ng-repeat="fu in followupData">
+                                            <div style="color:#184ca0;" class="ng-binding">{{interaction}}</div>
+                                            <div class="ng-binding"> </div>
+                                        </div><!-- end ngRepeat: fu in followupData -->
+
+
+                                    </div><!-- end ngIf: true -->
+
+                                    <!-- ngIf: false -->
+                                </div>
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.widget-box -->
+                    <!-- </div> -->
+                    <!-- /.col -->
+                    <!-- ---------Latest News Alert------------- -->
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-xs-12" style="margin-top:10px;">
+                    <div class="col-sm-6 widget-container-col" id="widget-container-col-10">
+                        <div class="widget-box" id="widget-box-10">
+                            <div class="widget-header widget-header-small">
+                                <p class="widget-title smaller">
+                                    <i class="ace-icon fa fa-bell-o"></i>
+                                    Lead Notification
+                                </p>
+
+                                <div class="widget-toolbar no-border" style="float: right;">
+                                    <ul class="nav nav-tabs" id="myTab">
+
+                                        <li [class.active]="activeTab4 === 'tab17'"><a
+                                            (click)="changeTab4('tab17')">Today</a>
+                                    </li>
+                                    <li [class.active]="activeTab4 === 'tab18'"><a
+                                            (click)="changeTab4('tab18')">Month</a>
+                                    </li>
+                                        
+                                        <li ng-if="true" class="ng-scope">
+                                            <a data-action="reload" (click)="leadNotifications()"
+                                                style="padding: 2px 0px 5px 8px; color: #ACD392; border-left: 1px solid #D9D9D9;">
+                                                <i class="ace-icon fa fa-refresh"></i>
+                                            </a>
+                                        </li><!-- end ngIf: true -->
+
+                                        <li><a data-action="collapse" style="padding: 0px 0px 0px;">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                  
+                                    <div ng-if="true"  class="ng-scope">
+                                        <div >
+                                            <div id="lead_notif_today" class="tab-pane in active">
+                                               
+
+                                            <div id="lead_notif_month" class="tab-pane">
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="showNewsAlertSeenModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title">
+                                <b>News Alert Seen By</b>
+                            </h4>
+                        </div>
+                        <div class="modal-body" style="max-height:480px; overflow-y:scroll;">
+                            <!-- ngRepeat: nas in newsAlertSeenData -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="showNewsAlertModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title">
+                                <b>News Alert</b>
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="ng-binding">
+                                <b>Date :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                            </div>
+
+                            <div style="margin-top: 15px; margin-bottom: 15px;" class="ng-binding">
+                                <b>Subject :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                            </div>
+
+                            <div class="ng-binding">
+                                <b>Description :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="setDashboardModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title">
+                                <b>Set Dashboard</b>
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- ngRepeat: itm in dashboardItemsData -->
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3">
+                                    <button class="btn btn-default" type="button" ng-click="saveDashboardItems()">
+                                        Update
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+

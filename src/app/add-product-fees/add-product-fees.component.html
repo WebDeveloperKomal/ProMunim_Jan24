@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Settings</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Product Fees</li>
+                </ol>
+            </nav>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <h1>
+                                Product Fees
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" routerLink="/set/productFees" class="btn btn-info" style="float: right;">View Product Fees</button>
+            </div>
+
+            <form [formGroup]="addproductfees" class="col-md-12 col-sm-12 col-xs-12 mt-5">
+
+
+                <div class="form-group row">
+                    <label for="productId" class="col-lg-1 col-4 col-form-label ml-2 mb-2">Product Name:</label>
+                    <div class="col-lg-4 col-8">
+                        <select formControlName="productId" [(ngModel)]="pFees.productId" class="form-select">
+                            <option value="">-----------------------Select------------------------ </option>
+                            <option *ngFor="let Product of products" value={{Product.productId}}>{{Product.productName}}
+                            </option>
+                        </select>
+                    </div>
+                    <label for="branchClassificationId" class="col-lg-1 col-4 col-form-label ml-2">Select Area:</label>
+                    <div class="col-lg-4 col-8">
+                        <select formControlName="branchClassificationId" [(ngModel)]="pFees.branchClassificationId" class="form-select">
+                            <option value="">-----------------------Select------------------------ </option>
+                            <option value="1">Rural</option>
+                            <option value="2">Urban </option>
+                            <option value="3">Semi-Urban</option>
+                            <option value="4">Metro </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fees" class="col-lg-1 col-4   col-form-label mr-5">Fees:</label>
+                    <div class="col-lg-4 col-8">
+                        <input type="email" formControlName="fees" [(ngModel)]="pFees.fees" class="form-control"
+                            id="complianceName">
+                    </div>
+                    <!-- <label for="contactno" class="col-lg-2 col-4   col-form-label mr-5">Contact
+                        Number:</label>
+                    <div class="col-lg-4 col-8">
+                        <input type="text" formControlName="contactno" class="form-control"
+                            id="complianceName">
+                    </div> -->
+                </div>
+                
+               
+                <div class="text-center mt-3">
+                    <!-- <div class="col-sm-offset-3 col-md-9"> -->
+                        <button type="button" class="btn btn-info  m-lg-4 m-4" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit</button>
+                         <button type="button" class="btn canc m-lg-4 m-4">
+                              <i class="ace-icon fa fa-undo bigger-110"></i>
+                              Cancel    
+                          </button>
+                    <!-- </div> -->
+        
+        
+                    <!-- <div class="text-end">
+                      <button type="button" class="btn btn-info m-lg-3 m-4"><i class="ace-icon fa fa-check bigger-110"></i> Submit</button>
+                      <button type="button" class="btn canc m-lg-3 m-4"><i class="ace-icon fa fa-undo bigger-110"></i> Reset</button>
+                  </div> -->
+        
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- 
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb" >
+            <li class="breadcrumb-item">
+              <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Settings</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Branch</li>
+          </ol>
+        </nav>
+        <div class="container ">
+          <div class="row">
+            <div class="col">
+              <div class="page-header">
+                <h1>
+                    Compliance
+                </h1>
+              </div>
+                           
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->

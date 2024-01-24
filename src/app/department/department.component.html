@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">Settings</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Department</li>
+        </ol>
+      </nav>
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <h1>
+                Department
+              </h1>
+            </div>
+            <div>
+              <button *ngIf="insertdepartment" type="button" routerLink="/set/add-department" class="btn btn-info" style="float: right;">Add
+                Department</button>
+              </div>
+            <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+              <div class="row" style="margin-top: 7%;">
+                <div class="col-lg-9 col-md-8">
+                  <div class="dataTables_length" id="branch_datatable_length">
+                    <p>Show
+                      <select name="branch_datatable_length" (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize"
+                        aria-controls="branch_datatable">
+                        <!-- [(ngModel)]="resultsPerPage" -->
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="25">25</option>
+                        <option [ngValue]="50">50</option>
+                        <option [ngValue]="100">100</option>
+                      </select> entries
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                  <div class="dataTables_filter" id="branch_datatable_filter">
+                    <p>Search:
+                      <input type="text" [(ngModel)]="SearchText" (input)="applyFilter()" placeholder=""
+                        aria-controls="branch_datatable">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table table-bordered table-striped">
+              <thead>
+                  <tr>
+                      <th width="10%">Sr.No</th>
+                      <th width="30%">Main Department</th>
+                      <th width="40%">Department</th>
+                      <th *ngIf="updatedepartment || deletedepartment" width="40%">Action</th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr
+                *ngFor="let data of departmentList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                <td>{{index+1}}</td>
+                <td>{{data.mainDepName}}</td>
+                <td>{{data.departmentName}}</td>
+                  <td  *ngIf="updatedepartment || deletedepartment">
+                    <button *ngIf="updatedepartment" class="btn btn-xs" style="font-size: 13px; background-color:#004C8C!important; color: white;" (click)="edit(data.departmentID)" >
+                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                    </button>&nbsp;&nbsp;
+                    <button *ngIf="deletedepartment" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.departmentID)" >
+                    <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
+                    <i class="fa-solid fa-trash-can"></i>
+                    </button>
+
+                </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-between p-2">
+              <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                aria-live="polite">
+                Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                  pageSize}} of {{departmentList.length}} entries </div>
+                  <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                    aria-label="Default pagination"></ngb-pagination>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

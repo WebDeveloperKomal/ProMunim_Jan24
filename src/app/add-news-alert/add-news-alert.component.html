@@ -1,0 +1,86 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a
+                href="/set">Home&#160;</a>
+            <i class="fa-solid fa-chevron-right"></i>
+        </li>
+
+        <li class=" active" style="color: #004C8C;" aria-current="page"><a href="/set/newsalert">
+            &#160;News Alert&#160;</a></li>
+        <li class=" active" style="color: #3bb161;" aria-current="page">
+            <i class="fa-solid fa-chevron-right"></i>&#160;Add News Alert&#160;
+        </li>
+    </ol>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container ">
+                <div class="row">
+                    <!-- <div class="col"> -->
+                    <div class="col-md-6 col-6 ">
+                        <b>
+                            <h5 style="color: #004C8C; margin-top: -5px;">
+                                News Alert
+                            </h5>
+                        </b>
+                    </div>
+
+                    <div class="col-md-6 col-6 text-end ">
+                        <button type="button" routerLink="/set/newsalert" style="border-radius: 20px; margin-top: -10px;"
+                            class="btn btn-info">
+                            View News Alert
+                        </button>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <!-- <button type="button" routerLink="/set/newsalert" class="btn btn-info" style="float: right;">View News Alert</button> -->
+            </div>
+
+            <form [formGroup]="AddNewsalertForm" class="col-md-12 col-sm-12 col-xs-12 mt-2"
+                style="background-color: #fff; border-radius: 5px; padding: 20px;">
+
+                <div class="form-group row">
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-floating ml-2  mb-2">
+                            <input type="date" formControlName="date" [(ngModel)]="NewsAlert.date" placeholder="Date"
+                                class="form-control" id="complianceDueDate">
+                            <label for="date" class="col-lg-2 col-4   col-form-label mr-5">Date:</label>
+                        </div>
+
+                        <div class="form-floating mb-2">
+                            <input class="form-control" id="address" [(ngModel)]="NewsAlert.subject" rows="3"
+                                placeholder="Subject" formControlName="subject" required>
+                            <label for="subject" class="col-lg-2 col-4   col-form-label mr-5">Subject: *</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+
+                        <div class="form-floating  mb-2">
+                            <textarea class="form-control" id="address" rows="3" [(ngModel)]="NewsAlert.description"
+                                placeholder="Description" formControlName="description" required> </textarea>
+                            <label for="description" class="col-lg-2 col-4   col-form-label mr-5">Description :</label>
+                        </div>
+
+                    </div>
+
+                    <div class="text-center mt-4 align-middle">
+                        <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                            (click)="onSubmit()" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,2118 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="breadcrumb-item" style="color: #004C8C;">
+            <i class="ace-icon fa fa-home home-icon" style="margin-right: 10px;  color: #004C8C;"></i><a
+                href="/set">Home&#160;</a>
+        </li>
+
+        <li class="active" style="color: #004C8C;">
+            <i class="fa-solid fa-chevron-right"></i>
+            Customer Service&#160;
+        </li>
+        <li class="breadcrumb-item active" style="color: #3BB161;" aria-current="page"><i
+                class="fa-solid fa-chevron-right"></i> Account Opening Form</li>
+    </ol>
+</nav>
+
+<div class="main-content-inner ng-scope" ng-controller="aofController" id="aofForm">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    </div>
+    <div class="page-content">
+        <div class="page-header row">
+            <b>
+                <h5 style="color: #004C8C; margin-top: -5px;  margin-left: 20px;">
+                    Account Opening Form
+                </h5>
+            </b>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12  m-2">
+                    <!--------------form start---------------- -->
+                    <div class="x_content">
+                        <div class="container">
+                            <div class="row">
+                                <div id="wizard" class="form_wizard wizard_horizontal">
+                                    <ul class="wizard_steps text-center">
+                                        <li [class.active]="activeTab === 'tab1'" class="centered-step "><a
+                                                (click)="changeTab('tab1')"> <span class="step_no"
+                                                    style="font-size: 12px; margin-left: -20px;">Step <p
+                                                        style="margin-top: -25px;">1</p></span>
+                                                <span class="step_descr" style="margin-left: -30px;"> <small>
+                                                        Details of Organization/Individual</small></span>
+                                            </a></li>
+
+                                        <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')"> <span
+                                                    class="step_no" style="font-size: 12px; margin-left: -30px;">Step <p
+                                                        style="margin-top: -25px;">2</p></span>
+                                                <span class="step_descr"> <small>
+                                                        Authorised Signatory Details</small>
+                                                </span>
+                                            </a></li>
+
+                                        <li [class.active]="activeTab === 'tab3'"><a (click)="changeTab('tab3')"> <span
+                                                    class="step_no" style="font-size: 12px; margin-left: -40px;">Step <p
+                                                        style="margin-top: -25px;">3</p></span>
+                                                <span class="step_descr"> <small>
+                                                        Occupation and Income Details</small>
+                                                </span>
+                                            </a></li>
+
+                                        <li [class.active]="activeTab === 'tab4'"><a (click)="changeTab('tab4')"> <span
+                                                    class="step_no" style="font-size: 12px; margin-left: -40px;">Step <p
+                                                        style="margin-top: -25px;">4</p></span>
+                                                <span class="step_descr"> <small>
+                                                        Documentation Requirement</small></span>
+                                            </a></li>
+
+                                        <li [class.active]="activeTab === 'tab5'"><a (click)="changeTab('tab5')"> <span
+                                                    class="step_no" style="font-size: 12px; margin-left: -40px;">Step <p
+                                                        style="margin-top: -25px;">5</p></span>
+                                                <span class="step_descr"> <small>
+                                                        Company Use</small></span>
+                                            </a></li>
+
+
+                                        <li [class.active]="activeTab === 'tab6'"><a (click)="changeTab('tab6')"><span
+                                                    class="step_no" style="font-size: 12px; margin-left: 0px;">Step <p
+                                                        style="margin-top: -25px;">6</p></span>
+                                                <span class="step_descr"> <small>
+                                                        Payment Details</small>
+                                                </span>
+                                            </a></li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="x_content">
+
+
+
+                                <div id="wizard" class="form_wizard wizard_horizontal">
+
+                                    <div class="stepContainer">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" [class.active]="activeTab === 'tab1'"
+                                                id="tab1">
+
+                                                <div class="form-floating col-4">
+                                                    <input type="text" (keyup.enter)="tidSearch()"
+                                                        [(ngModel)]="tidToSearch" placeholder="TID"
+                                                        class="form-control " id="complianceName">
+                                                    <label class="col-lg-1 col-4 col-form-label">TID:</label>
+                                                </div>
+
+                                                <!-- <div id="tab1" class="wizard_content" style="display: block;"> -->
+                                                <form [formGroup]="step1"
+                                                    class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required m-4">
+
+                                                    <div class="form-group row " style="margin-top: -20px;">
+
+                                                        <div class="col-md-6 col-lg-6 col-xl-6 col-12"
+                                                            style="margin-left: 70px; width: 450px;">
+                                                            <div class="form-floating">
+                                                                <input type="text" formControlName="branchId"
+                                                                    placeholder="" [(ngModel)]="AOF1.branchid"
+                                                                    class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched "
+                                                                    id="branchid" readonly="">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                    for="">Branch Name/Code <span
+                                                                        class="required">*</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-lg-6 col-xl-6 col-12"
+                                                            style="margin-left: -20px; width: 450px;">
+                                                            <div class="form-floating ">
+                                                                <input type="text" required="required" placeholder=""
+                                                                    formControlName="aofNo" [(ngModel)]="AOF1.aofNumber"
+                                                                    class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                    id="afono" ng-model="customer.aofNumber"
+                                                                    readonly="">
+                                                                <label for="aofNo"
+                                                                    class="control-label col-md-2 col-sm-2 col-xs-12">AOF
+                                                                    No. <span class="required">*</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <div
+                                                        style="background-color: #fff; margin-left: -20px; margin-top: 10px; padding: 5px 30px 10px; border-radius: 6px;">
+                                                        <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                            <b> Details
+                                                                of Organization/Individual</b>
+                                                        </h5>
+
+                                                        <div class="form-group row">
+
+                                                            <div class="col-md-6 col-lg-6 col-xl-6 col-12"
+                                                                style="margin-top: -15px;">
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <br> <input type="text" id="full-name"
+                                                                        placeholder="" required="required"
+                                                                        formControlName="tempCustApplicantName"
+                                                                        [(ngModel)]="AOF1.tempCustApplicantName"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        ng-model="customer.tempCustApplicantName">
+                                                                    <label for="tempCustApplicantName" id="Applicant"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                        Name of the Applicant Mr/Mrs/Ms.<span
+                                                                            class="required">*</span>
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" formControlName="tempCustPanNumber"
+                                                                        placeholder=""
+                                                                        [(ngModel)]="AOF1.tempCustPanNumber"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustPanNumber"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">PAN
+                                                                        No. :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for=""
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">TAN
+                                                                        No. :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for=""
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">GST
+                                                                        No. :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for=""
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">TASC
+                                                                        No. :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" formControlName="tempCustCity"
+                                                                        placeholder="" [(ngModel)]="AOF1.tempCustCity"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustCity"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">City
+                                                                        : </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" formControlName="tempCustRegMobile"
+                                                                        placeholder=""
+                                                                        [(ngModel)]="AOF1.tempCustRegMobile"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustRegMobile"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">Mobile
+                                                                        No. : </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" formControlName="tempCustRegMailID"
+                                                                        [(ngModel)]="AOF1.tempCustRegMailID"
+                                                                        placeholder=""
+                                                                        class="form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                        required="required">
+                                                                    <label
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">Mail
+                                                                        ID : <span class="required">*</span>
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2"
+                                                                    style="color: #004C8C;">
+                                                                    <input type="checkbox" ng-model="check"
+                                                                        ng-change="stateChanged()"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    &#160;
+                                                                    <b>Please Click if Mailing Address is same as
+                                                                        Registered Address</b>
+                                                                    <label
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                        for="">
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2 ">
+                                                                    <textarea rows="2" placeholder=""
+                                                                        formControlName="tempCustMailingAddress"
+                                                                        [(ngModel)]="AOF1.tempCustMailingAddress"
+                                                                        class="form-control col-md-10 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        id="mailingaddress">
+                                                 </textarea>
+                                                                    <label
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">Mailing
+                                                                        Address <br>
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2 ">
+                                                                    <input id="" placeholder=""
+                                                                        formControlName="tempCustMailingAddressPin"
+                                                                        [(ngModel)]="AOF1.tempCustMailingAddressPin"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustMailingAddressPin"
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">PIN
+                                                                        : </label>
+                                                                </div>
+
+                                                                <div class="form-floating ml-2 mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        formControlName="tempCustMailingAddressTelephone"
+                                                                        [(ngModel)]="AOF1.tempCustMailingAddressTelephone"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustMailingAddressTelephone"
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">Telephone
+                                                                        No. : </label>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+
+                                                                <div class="form-floating  mb-2">
+                                                                    <input type="date" placeholder=""
+                                                                        formControlName="tempCustdorordob"
+                                                                        [(ngModel)]="AOF1.tempCustdorordob"
+                                                                        class="form-control" id="complianceDueDate">
+                                                                    <label for="tempCustdorordob"
+                                                                        class="col-lg-2 col-4   col-form-label mr-5">Date
+                                                                        of Incorporation/Registration/DOB
+                                                                        <span class="required">*</span> </label>
+                                                                </div>
+
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for=""
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">Aadhaar
+                                                                        No.
+                                                                        : </label>
+                                                                </div>
+
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for=""
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">PT
+                                                                        No.
+                                                                        :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" formControlName="tempCustUIN"
+                                                                        placeholder="" [(ngModel)]="AOF1.tempCustUIN"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustUIN"
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">UIN
+                                                                        No. :
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <textarea rows="2"
+                                                                        formControlName="tempCustRegAddress"
+                                                                        placeholder=""
+                                                                        [(ngModel)]="AOF1.tempCustRegAddress"
+                                                                        class="form-control col-md-10 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        id="regaddress">
+                                                 </textarea>
+                                                                    <label
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">Registered
+                                                                        Address </label>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" formControlName="tempCustRegPIN"
+                                                                        placeholder="" [(ngModel)]="AOF1.tempCustRegPIN"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustRegPIN"
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">PIN
+                                                                        : </label>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" formControlName="tempCustRegTelephone"
+                                                                        placeholder=""
+                                                                        [(ngModel)]="AOF1.tempCustRegTelephone"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustRegTelephone"
+                                                                        class="control-label col-md-2 col-sm-2 col-xs-12">Telephone
+                                                                        No. : </label>
+                                                                </div>
+
+
+                                                                <div class="form-floating mb-2"
+                                                                    style="margin-top: 105px;">
+                                                                    <input id="" placeholder=""
+                                                                        formControlName="tempCustMailingAddressCity"
+                                                                        [(ngModel)]="AOF1.tempCustMailingAddressCity"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustMailingAddressCity"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">City
+                                                                        : </label>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <input id="" placeholder=""
+                                                                        formControlName="tempCustMailingAddressMobileNo"
+                                                                        [(ngModel)]="AOF1.tempCustMailingAddressMobileNo"
+                                                                        class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                        type="text">
+                                                                    <label for="tempCustMailingAddressMobileNo"
+                                                                        class="control-label col-md-3 col-sm-3 col-xs-12">Mobile
+                                                                        No. : </label>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="text-center align-middle">
+                                                            <button class="btn-info  m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;"
+                                                                (click)="onSubmit()" routerLink="/set/" type="submit">
+                                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish
+                                                            </button>
+
+                                                            <button class="btn-info m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;"
+                                                                (click)="onSubmit();changeTab('tab2')">
+                                                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                                Next
+                                                            </button>
+                                                        </div>
+
+                                                        <!-- <div class="actionBar ">
+                                                            <div class="text-center mt-3">
+                                                                <div class="col-sm-offset-3 col-md-9">
+                                                                <button type="button" class="btn btn-info  m-lg-4 m-4 "
+                                                                    (click)="onSubmit()"><i
+                                                                        class="ace-icon fa fa-check bigger-110"></i>
+                                                                    Finish</button>
+                                                                <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                    (click)="onSubmit();changeTab('tab2')"><i
+                                                                        class="bi bi-arrow-90deg-right"></i>
+                                                                    Next</button>
+                                                            </div>
+                                                        </div> -->
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab2'" id="tab2"
+                                                style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                <!-- <div id="step-2 " class="wizard_content" style="display: none;"> -->
+                                                <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                    <b>Authorised
+                                                        Signatory Details</b>
+                                                </h5>
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid"
+                                                    [formGroup]="step2">
+
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-1 col-4 col-form-label">TID Number:</label>
+                                                        <div class="col-lg-4 col-4">
+                                                            <input type="text" (keyup.enter)="tidSearch()"
+                                                                placeholder="Enter" [(ngModel)]="tidToSearch"
+                                                                formControlName="tid" class="form-control "
+                                                                id="complianceName">
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group row text-center mt-2">
+                                                        <label
+                                                            class="control-label col-md-5 col-sm-5 col-xs-12 col-md-offset-3"
+                                                            for="" style="text-align: center">(to be filled by
+                                                            each authorized signatory seperately) </label>
+                                                    </div>
+
+                                                    <div class="form-group row text-center mt-2">
+
+                                                        <div class="form-floating col-md-12 col-sm-12 col-xs-12">
+                                                            <input type="text" placeholder=""
+                                                                class="form-control col-md-8 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1name" formControlName="name"
+                                                                [(ngModel)]="AOF2.name">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                id="as1name" for="name">Name of the
+                                                                authorized signatory</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-center mt-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" [(ngModel)]="AOF2.shortName"
+                                                                formControlName="shortName" placeholder=""
+                                                                class="form-control col-md-4 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1shortname">
+                                                            <label for="" id="as1name"
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12">PAN
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-floating col-sm-6 col-xs-12">
+                                                            <input type="date" formControlName="date" placeholder=""
+                                                                [(ngModel)]="AOF2.date" class="form-control"
+                                                                id="complianceDueDate">
+                                                            <label for="date" id="as1name"
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12">Date
+                                                                of
+                                                                birth
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row text-center mt-2">
+                                                        <div class="form-floating col-sm-4 col-xs-12">
+                                                            <select formControlName="gender"
+                                                                aria-label="Floating label select example"
+                                                                [(ngModel)]="AOF2.gender" id="as1gender"
+                                                                class="form-select border-secondary">
+                                                                <option selected>Select</option>
+                                                                <option id="as1gender" value="MALE">Male</option>
+                                                                <option id="as1gender" value="FEMALE">Female</option>
+                                                            </select>
+                                                            <label for="constitutionOfCompany" id="as1name"
+                                                                class="col-lg-2 col-4  ml-2">Gender</label>
+                                                        </div>
+
+                                                        <div class="form-floating col-sm-4 col-xs-12">
+                                                            <select formControlName="nationality"
+                                                                aria-label="Floating label select example"
+                                                                [(ngModel)]="AOF2.nationality" id="as1nationality"
+                                                                class="form-select border-secondary">
+                                                                <option selected>Select</option>
+                                                                <option id="as1nationality" value="INDIAN">Indian
+                                                                </option>
+                                                                <option id="as1nationality" value="OTHER">Other</option>
+                                                            </select>
+                                                            <label for="constitutionOfCompany" id="as1name"
+                                                                class="col-lg-2 col-4  ml-2">Nationality</label>
+                                                        </div>
+
+                                                        <div class="form-floating col-sm-4 col-xs-12">
+                                                            <select formControlName="religion"
+                                                                aria-label="Floating label select example"
+                                                                [(ngModel)]="AOF2.religion" id="as1religion"
+                                                                class="form-select border-secondary">
+                                                                <option selected>Select</option>
+                                                                <option id="as1religion" value="HINDU">Hindu</option>
+                                                                <option id="as1religion" value="MUSLIM">Muslim</option>
+                                                                <option id="as1religion" value="CRISTIAN">Cristian
+                                                                </option>
+                                                                <option id="as1religion" value="SIKH">Sikh</option>
+                                                                <option id="as1religion" value="BUDDHISM">Bouddhist
+                                                                </option>
+                                                                <option id="as1religion" value="OTHER">Other</option>
+                                                            </select>
+                                                            <label for="constitutionOfCompany" id="as1name"
+                                                                class="col-lg-2 col-4  ml-2">Religion</label>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group row text-center mt-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" formControlName="motherName"
+                                                                placeholder="" [(ngModel)]="AOF2.motherName"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1mothermname">
+                                                            <label for="motherName" id="as1name"
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12">Mother's
+                                                                Maiden Name
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" formControlName="designation"
+                                                                placeholder="" [(ngModel)]="AOF2.designation"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1designation">
+                                                            <label for="designation" id="as1name"
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12">Designation</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group row text-center mt-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" formControlName="mobile" placeholder=""
+                                                                [(ngModel)]="AOF2.mobile"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1mobile">
+                                                            <label for="mobile" id="as1name"
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12">Mobile
+                                                                Number
+                                                            </label>
+                                                        </div>
+
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" formControlName="telephone"
+                                                                placeholder="" [(ngModel)]="AOF2.telephone"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1telephone">
+                                                            <label for="telephone" id="as1name"
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12">Telephone
+                                                                number
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-center mt-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input formControlName="email" [(ngModel)]="AOF2.email"
+                                                                placeholder=""
+                                                                class="form-control col-md-4 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="as1email">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                id="as1name" for="">Email
+                                                                ID</label>
+                                                        </div>
+
+                                                        <!-- <div class="form-floating col-sm-4 col-xs-12">
+                                                            <select formControlName="serFinanPlan"
+                                                                aria-label="Floating label select example"
+                                                                [(ngModel)]="AOF2.serFinanPlan" id="as1religion"
+                                                                class="form-select border-secondary">
+                                                                <option selected>Select</option>
+                                                                <option  value="Financial Planning">Financial Planning</option>
+                                                                <option  value="Account Writing">Account Writing</option>
+                                                                <option  value="Investment Planning">Investment Planning</option>
+                                                                <option  value="Tax Planning">Tax Planning</option> 
+                                                            </select>
+                                                            <label for="constitutionOfCompany"
+                                                                class="col-lg-2 col-4  ml-2">Services</label>
+                                                        </div> -->
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group row text-center mt-2"
+                                                        style="color: #004C8C;">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                            for="">Services</label>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serFinanPlan"
+                                                                formControlName="serFinanPlan"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Financial Planning"
+                                                                name="tempCustAS1SerFinPlan">Financial Planning
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serAccWrite"
+                                                                formControlName="serAccWrite"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Account Writing" name="tempCustAS1SerAccWrite"
+                                                                ng-model="authSignOne.tempCustAS1SerAccWrite">Account
+                                                            Writing
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serInvestPlan"
+                                                                formControlName="serInvestPlan"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Investment Planning"
+                                                                name="tempCustAS1SerInvestPlan"
+                                                                ng-model="authSignOne.tempCustAS1SerInvestPlan">Investment
+                                                            Planning
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox" [(ngModel)]="AOF2.serTaxPlan"
+                                                                formControlName="serTaxPlan"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Tax Planning" name="tempCustAS1SerTaxPlan"
+                                                                ng-model="authSignOne.tempCustAS1SerTaxPlan">Tax
+                                                            Planning
+                                                        </div>
+                                                    </div>
+                                                    <h5 class="h2_form text-center mt-4" style="color: white;">
+                                                        Declaration
+                                                    </h5>
+
+                                                    <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
+                                                    <div class="form-group row text-center">
+
+                                                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
+                                                            <input type="file" class="filestyle"
+                                                                (change)="onSignSelected($event)"
+                                                                data-buttontext="Signatory Signature"
+                                                                data-buttonbefore="true" required="required"
+                                                                file-model="sigOneSign" id="filestyle-0" tabindex="-1"
+                                                                style="position: absolute; clip: rect(0px, 0px, 0px, 0px); color: rgb(9, 14, 14);">
+                                                            <div class="bootstrap-filestyle input-group"><span
+                                                                    class="group-span-filestyle input-group-btn"
+                                                                    tabindex="0"><label for="filestyle-0"
+                                                                        class="btn btn-success "><span
+                                                                            class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                                                        <span class="buttonText">Signatory
+                                                                            Signature</span></label></span><input
+                                                                    type="text" class="form-control " placeholder=""
+                                                                    disabled=""> </div>
+                                                        </div>
+
+                                                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1">
+                                                            <input type="file" class="filestyle"
+                                                                (change)="onPhotoSelected($event)"
+                                                                data-buttontext="Upload photo" data-buttonbefore="true"
+                                                                required="required" file-model="sigOnePhoto"
+                                                                id="filestyle-1" tabindex="-1"
+                                                                style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+                                                            <div class="bootstrap-filestyle input-group"><span
+                                                                    class="group-span-filestyle input-group-btn"
+                                                                    tabindex="0"><label for="filestyle-1"
+                                                                        class="btn btn-success "><span
+                                                                            class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                                                        <span class="buttonText">Upload
+                                                                            photo</span></label></span><input
+                                                                    type="text" class="form-control " placeholder=""
+                                                                    disabled=""> </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <a class="btn btn-info mt-3 mb-3" style="border-radius: 20px;"
+                                                        (click)="onsubmit2()">Add
+                                                        Signatory</a>
+
+                                                    <div class="box-body">
+                                                        <table id="branch_datatable"
+                                                            class="table table-bordered rounded-table" cellspacing="0"
+                                                            width="100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name of Authorised Signatory</th>
+                                                                    <th>PAN</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let authSig of AuthSignatoryList">
+                                                                    <td>{{authSig.name}}</td>
+                                                                    <td>{{authSig.shortName}}</td>
+                                                                    <td> <button class="btn" style="font-size: 13px;"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#exampleModal">
+                                                                            <i class="fa-solid fa-pen-to-square fa-lg"
+                                                                                style=" color: #3BB161;"></i>
+                                                                        </button>&nbsp;&nbsp;</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
+                                                    <div class="text-center mt-4 align-middle">
+                                                        <button class="btn-info  m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;"
+                                                            (click)="onsubmit2()" type="submit">
+                                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                                            Submit
+                                                        </button>
+
+                                                        <button class="btn-info m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;"
+                                                            (click)="changeTab('tab3')">
+                                                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                            Cancal
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- </form> -->
+                                                    <!-- <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit2()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="changeTab('tab3')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
+                                                        </div>
+                                                    </div> -->
+                                                </form>
+
+
+
+
+                                            </div>
+
+
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab3'" id="tab3">
+                                                <!-- <div id="step-3" class="wizard_content" style="display: none;"> -->
+
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid "
+                                                    [formGroup]="step3">
+
+                                                    <div
+                                                        style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                        <h5 class="h2_form text-center mt-3" style="color: #3BB161;"><b>
+                                                                Nature
+                                                                Of Business</b></h5>
+
+                                                        <div class="form-group row">
+
+                                                            <div class="form-floating col-lg-6 col-4 offset-md-3">
+                                                                <input type="text" (keyup.enter)="tidSearch()"
+                                                                    placeholder="Enter" [(ngModel)]="AOF3.tid"
+                                                                    formControlName="tid" class="form-control "
+                                                                    id="complianceName">
+                                                                <label class="col-lg-1 col-4 col-form-label "
+                                                                    id="as1name">TID Number:</label>
+                                                                <!--  -->
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row text-center mt-1">
+
+                                                            <div
+                                                                class="form-floating col-md-6 col-sm-6 col-xs-12 offset-md-3">
+                                                                <input type="text"
+                                                                    class="form-control col-md-8 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                    id="bussiness" formControlName="businessNature"
+                                                                    placeholder="" [(ngModel)]="AOF3.businessNature">
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                    for="businessNature" id="as1name">Business
+                                                                    Nature</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div
+                                                        style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                        <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                            <b> Please
+                                                                tell
+                                                                us about your occupation
+                                                                and income details </b>
+                                                        </h5>
+
+                                                        <div id="income_type" style="margin-bottom:50px;">
+                                                            <!-- <form
+                                                            class="form-horizontal form-label-left ng-pristine ng-valid row m-2">
+     -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                                <label>
+                                                                    <input type="radio" name="type" id="type"
+                                                                        formControlName="type" [(ngModel)]="AOF3.type"
+                                                                        value="INDIVIDUAL" checked="checked"
+                                                                        class="ng-pristine ng-untouched ng-valid"
+                                                                        (click)="show1()">
+                                                                    If A Individual, you work for </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                <label>
+                                                                    <input type="radio" name="type" id="type"
+                                                                        formControlName="type" [(ngModel)]="AOF3.type"
+                                                                        value="NON INDIVIDUAL" (click)="show2()"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    If Non Individual, you are </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                <label>
+                                                                    <input type="radio" name="type" id="type"
+                                                                        formControlName="type" [(ngModel)]="AOF3.type"
+                                                                        value="SELF EMPLOYEED"
+                                                                        ng-model="occupIncome.type" (click)="show3()"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    If Self Employed, your nature of </label>
+                                                            </div>
+                                                            <!-- </form> -->
+                                                        </div>
+                                                        <hr style="margin-top: -40px;">
+
+                                                        <div id="individual" *ngIf="individual" >
+                                                            <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid "> -->
+                                                            <div class="form-group row m-2">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="PUBLIC SECTOR" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Public
+                                                                    Sector
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="STATE GOVERNMENT" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">State
+                                                                    Government
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="CENTRALl GOVERNMENT" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">Central
+                                                                    Government
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="MULTI-NATIONAL COMPANY" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Multi-National Company
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                                                    <input type="radio" name="name"
+                                                                        value="PUBLIC LIMITED COMPANY" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Public Limited Company
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="PRIVATE LIMITED COMPANY" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Private Limited Company
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="PARTNERSHIP"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Partnership
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="PROORIETORSHIP" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Proprietorship
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="OTHER"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Other,
+                                                                    Please
+                                                                    Specify <input type="text" required="required"
+                                                                        class=" ">
+                                                                </div>
+                                                            </div>
+                                                            <!-- </form> -->
+                                                        </div>
+
+
+                                                        <div id="non_individual" *ngIf="nonindividual">
+                                                            <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
+                                                            <div class="form-group row">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="D-INDIVIDUAL-DIRECTOR" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    D-Individual-Director
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="E-INDIVIDUAL SELF-EMPOYED" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    E-Individual Self-Employed
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="T-INDIVIDUAL-TRUSTEE" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    T-Individual-Trustee
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="R-INDIVIDUAL-PARTNER" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    R-Individual-Partner
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                                                    <input type="radio" name="name"
+                                                                        value="U-SOLE PROPRIETORSHIP" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    U-Sole Proprietorship
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="F-PARTNERSHIP FIRM" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    F-Partnership Firm
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="TRUST/SOCIETY/CLUB" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Trust/Society/Club
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="C-PRIVATE LTD COMPANY" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    C-Private Ltd Company
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="OTHER"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Other,
+                                                                    Please
+                                                                    Specify <input type="text" class=" ">
+                                                                </div>
+                                                            </div>
+                                                            <!-- </form> -->
+                                                        </div>
+
+                                                        <div id="self_emp" *ngIf="selfemployee">
+                                                            <!-- <form
+                                                        class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required"> -->
+                                                            <div class="form-group row">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="TRADING"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">Trading
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="MANUFACTURING" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Manufacturing
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value=" CONSULTANCY"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Consultancy
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="REAL ESTATE"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid"> Real
+                                                                    Estate
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                                                    <input type="radio" name="name" value="TRANSPORTER"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">Transporter
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="SERVICE PROVIDER" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Service
+                                                                    Provider
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name" value="CONTRACTOR"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Contractor
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="PROFESSIONAL PRACTICE" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Professional Practice
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="radio" name="name"
+                                                                        value="DEALER/DISTRIBUTOR" id="name"
+                                                                        formControlName="name" [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Dealer/Distributor
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                                    <input type="radio" name="name" value="OTHER"
+                                                                        id="name" formControlName="name"
+                                                                        [(ngModel)]="AOF3.name"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Other,
+                                                                    Please
+                                                                    Specify <input type="text" required="required"
+                                                                        class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                        ng-model="otherIndustry">
+                                                                </div>
+                                                            </div>
+                                                            <!-- </form> -->
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <br>
+                                                    
+                                                    <div
+                                                        style="background-color: #fff; margin-top: -8px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                        <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                            <b> Constitution
+                                                                of Business/Entity </b>
+                                                        </h5>
+
+                                                        <div class="form-floating col-sm-6 col-xs-12 offset-md-3">
+                                                            <select formControlName="industrysector"
+                                                                aria-label="Floating label select example"
+                                                                [(ngModel)]="AOF3.industrysector" id="as1gender"
+                                                                class="form-select border-secondary">
+                                                                <option selected>Select</option>
+                                                                <option id="industrysector" value="INDIVIDUAL">
+                                                                    Individual</option>
+                                                                <option id="industrysector" value="PROFESSIONAL">
+                                                                    Professional</option>
+                                                                <option id="industrysector"
+                                                                    value="HINDU UNDIVIDED FAMILY">Hindu Undivided
+                                                                    Family</option>
+                                                                <option id="industrysector" value="SOLE PROPRIETORSHIP">
+                                                                    Sole Proprietorship</option>
+                                                                <option id="industrysector" value="PARTNERSHIP">
+                                                                    Partnership</option>
+                                                                <option id="industrysector"
+                                                                    value="PRIVATE LIMITED COMPANY">Private Limited
+                                                                    Company</option>
+                                                                <option id="industrysector"
+                                                                    value="PUBLIC LIMITED COMPANY">Public Limited
+                                                                    Company</option>
+                                                                <option id="industrysector"
+                                                                    value="Trust/Society/Association/Club">
+                                                                    Trust/Society/Association/Club</option>
+                                                                <option id="industrysector" value="Others">Others
+                                                                </option>
+
+                                                            </select>
+                                                            <label for="constitutionOfCompany"
+                                                                class="col-lg-2 col-4  ml-2">Constitution of
+                                                                Business/Entity</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
+                                                    <!-- <div class="form-group row m-2">
+                                                            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="INDIVIDUAL" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">Individual
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="PROFESSIONAL" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">Professional
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="HINDU UNDIVIDED FAMILY" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid"> Hindu
+                                                                Undivided Family
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="SOLE PROPRIETORSHIP" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid"> Sole
+                                                                Proprietorship
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="PARTNERSHIP" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Partnership
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="PRIVATE LIMITED COMPANY" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Private Limited Company
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="PUBLIC LIMITED COMPANY" id="industrysector"
+                                                                    formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Public Limited Company
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
+                                                                <input type="radio" name="industrysector"
+                                                                    value="Trust/Society/Association/Club"
+                                                                    id="industrysector" formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">
+                                                                Trust/Society/Association/Club
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                <input type="radio" name="industrysector" value="OTHERS"
+                                                                    id="industrysector" formControlName="industrysector"
+                                                                    [(ngModel)]="AOF3.industrysector"
+                                                                    class="ng-pristine ng-untouched ng-valid">Others
+                                                            </div>
+                                                        </div> -->
+
+                                                    <!-- </form> -->
+
+                                                    <div
+                                                        style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                        <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                            <b> Applicable
+                                                                Compliances </b>
+                                                        </h5>
+
+                                                        <!-- <form class="form-horizontal form-label-left ng-pristine ng-valid"> -->
+
+                                                        <div class="form-group row m-2">
+
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="6"
+                                                                        (change)="updateCompliances('Income Tax - Non Audit',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Income Tax - Non Audit </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="6"
+                                                                        (change)="updateCompliances('GST - Composition',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    GST - Composition </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="6"
+                                                                        (change)="updateCompliances('Professional Tax (PT)',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Professional Tax (PT) </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="6"
+                                                                        (change)="updateCompliances('Tax Deducted at Source',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Tax Deducted at Source (TDS) </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="7"
+                                                                        (change)="updateCompliances('Excise Duty',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Excise Duty </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="8"
+                                                                        (change)="updateCompliances('Value Added Tax',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Value Added Tax (VAT) </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="9"
+                                                                        (change)="updateCompliances('Service Tax',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Service Tax </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="10"
+                                                                        (change)="updateCompliances('Tax Deducted at Source',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Tax Deducted at Source (TDS) </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="11"
+                                                                        (change)="updateCompliances('Property Tax',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    Property Tax </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                            <div class="col-md-4 col-sm-4 col-xs-12 ng-scope">
+                                                                <label class="ng-binding">
+                                                                    <input type="checkbox" name="compliances" id="12"
+                                                                        (change)="updateCompliances('ROC- Mandatory Compliances',$event)"
+                                                                        class="ng-pristine ng-untouched ng-valid">
+                                                                    ROC- Mandatory Compliances </label>
+                                                            </div>
+                                                            <!-- end ngRepeat: compliance in compliances -->
+                                                        </div>
+                                                        <!-- </form> -->
+
+                                                        <div class="text-center mt-3 align-middle">
+                                                            <button class="btn-info  m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;"
+                                                                (click)="onsubmit3()" type="submit">
+                                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish
+                                                            </button>
+
+                                                            <button class="btn-info m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;"
+                                                                (click)="onsubmit3();changeTab('tab4')">
+                                                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                                Next
+                                                            </button>
+                                                        </div>
+
+
+                                                        <!-- <div class="actionBar ">
+                                                            <div class="text-center mt-3">
+                                                                <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                    (click)="onsubmit3()"><i
+                                                                        class="ace-icon fa fa-check bigger-110"></i>
+                                                                    Finish</button>
+                                                                <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                    (click)="onsubmit3();changeTab('tab4')"><i
+                                                                        class="bi bi-arrow-90deg-right"></i>
+                                                                    Next</button>
+                                                            </div>
+                                                        </div> -->
+
+                                                    </div>
+                                                </form>
+
+
+
+
+
+
+
+                                            </div>
+
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab4'" id="tab4"
+                                                style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                <!-- <div id="step-4" class="wizard_content" style="display: none;"> -->
+                                                <h5 class="h2_form text-center mt-3" style="color:#3BB161;"><b>Customer
+                                                        Documents</b></h5>
+
+                                                <div id="addDoc">
+                                                    <form class="form-horizontal  ng-pristine ng-valid" role="form"
+                                                        action="" method="post" modelattribute="doc1" name="form1"
+                                                        [formGroup]="step4">
+
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                            <div class="form-group row">
+
+                                                                <div class="form-floating col-sm-6 offset-md-3">
+                                                                    <input type="text" (keyup.enter)="tidSearch()"
+                                                                        placeholder="Enter" [(ngModel)]="tidToSearch"
+                                                                        formControlName="tid" class="form-control "
+                                                                        id="complianceName">
+                                                                    <label class="col-lg-1 col-4 col-form-label"
+                                                                        id="as1name">TID
+                                                                        Number:
+                                                                    </label>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="form-group row text-center m-2 ">
+
+                                                                <div class="form-floating col-sm-6 offset-md-3">
+                                                                    <select (click)="onchange($event)"
+                                                                        formControlName="customerDocumentCategoryId"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="catId">
+                                                                        <option value="0">Select</option>
+                                                                        <option ng-repeat="d in documentCategory"
+                                                                            *ngFor="let doc of docCategoryList"
+                                                                            value={{doc.cid}}
+                                                                            class="ng-binding ng-scope">{{doc.name}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <label class="col-sm-4 control-label"
+                                                                        id="as1name">Select
+                                                                        Category*:</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group row text-center m-2">
+
+                                                                <div class="form-floating col-sm-6 offset-md-3">
+                                                                    <select formControlName="customerDocumentType"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="doctype" ng-model="doc1.docType">
+                                                                        <option value="0">Select</option>
+                                                                        <!-- ngRepeat: d in documentType -->
+                                                                        <option ng-repeat="d in documentCategory"
+                                                                            *ngFor="let doc of docType"
+                                                                            class="ng-binding ng-scope">{{doc.name}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <label class="col-sm-4 control-label"
+                                                                        id="as1name">Select
+                                                                        Type*:</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                                <div
+                                                                    class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1 offset-md-6">
+                                                                    <input type="file" class="filestyle"
+                                                                        (change)="onPhotoSelected($event)"
+                                                                        data-buttontext="Upload photo"
+                                                                        data-buttonbefore="true" required="required"
+                                                                        file-model="sigOnePhoto" id="filestyle-1"
+                                                                        tabindex="-1"
+                                                                        style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+                                                                    <div class="bootstrap-filestyle input-group"><span
+                                                                            class="group-span-filestyle input-group-btn"
+                                                                            tabindex="0"><label for="filestyle-1"
+                                                                                class="btn btn-success "><span
+                                                                                    class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                                                                <span class="buttonText">Upload
+                                                                                    photo</span></label></span><input
+                                                                            type="text" class="form-control "
+                                                                            placeholder="" disabled=""> </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group row text-center m-2 ">
+
+                                                                <div class="form-floating col-sm-6 offset-md-3">
+                                                                    <textarea formControlName="description"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="descr"></textarea>
+                                                                    <label for="description"
+                                                                        class="col-sm-4 control-label"
+                                                                        id="as1name">Description(Optional):</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-9 col-sm-6 col-xs-6">
+                                                            <div class="form-group">
+                                                                <button type="button" class="btn btn-info mb-3 "
+                                                                    (click)="onsubmit4()"
+                                                                    style="float:right; margin-right: 15px; border-radius: 20px;">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div> <!-- //addDoc -->
+
+                                                <div id="showDoc">
+                                                    <table class="table table-bordered rounded-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="5%">Sr.No.</th>
+                                                                <th width="20%">Document Category</th>
+                                                                <th width="35%">Document Type</th>
+                                                                <th width="35%">Description</th>
+                                                                <th width="5%">View</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- ngRepeat: d in documentData -->
+                                                        </tbody>
+                                                    </table>
+                                                </div> <!-- //showDoc -->
+
+                                                <div class="text-center mt-4 align-middle">
+                                                    <button class="btn-info  m-lg-4 m-4 w-25"
+                                                        style="height: 40px; border-radius: 2rem;" (click)="onsubmit4()"
+                                                        type="submit">
+                                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                                        Finish
+                                                    </button>
+
+                                                    <button class="btn-info m-lg-4 m-4 w-25"
+                                                        style="height: 40px; border-radius: 2rem;"
+                                                        (click)="changeTab('tab5')">
+                                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                        Next
+                                                    </button>
+                                                </div>
+                                                <!-- <div class="actionBar ">
+                                                    <div class="text-center mt-3">
+                                                        <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                            (click)="onsubmit4()"><i
+                                                                class="ace-icon fa fa-check bigger-110"></i>
+                                                            Finish</button>
+                                                        <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                            (click)="changeTab('tab5')"><i
+                                                                class="bi bi-arrow-90deg-right"></i>
+                                                            Next</button>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+
+                                            <!-- 6666666666666666666666666666666 -->
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab5'" id="tab5"
+                                                style="margin-bottom: 35px;">
+                                                <!-- <div id="step-5" class="wizard_content" style="display: none;"> -->
+
+
+                                                <form class="form-horizontal form-label-left ng-pristine ng-valid"
+                                                    style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;"
+                                                    [formGroup]="step5">
+                                                    <h5 class="h2_form text-center mt-3" style="color: #3BB161;">
+                                                        <b>Customer
+                                                            Account Operations</b>
+                                                    </h5>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-1 col-4 col-form-label">TID Number:</label>
+                                                        <div class="col-lg-4 col-4">
+                                                            <input type="text" (keyup.enter)="tidSearch()"
+                                                                placeholder="Enter" [(ngModel)]="tidToSearch"
+                                                                formControlName="tid" class="form-control "
+                                                                id="complianceName">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group row text-center m-2">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                            for="">I wish to
+                                                            apply for following Services</label>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Financial Planning"
+                                                                formControlName="financialPlanning">Financial
+                                                            Planning
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Account Writing"
+                                                                formControlName="accountWriting">Account
+                                                            Writing
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Investment Planning"
+                                                                formControlName="investmentPlanning">Investment
+                                                            Planning
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                                            <input type="checkbox"
+                                                                class="col-md-2 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                value="Tax Planning" formControlName="taxPlanning">Tax
+                                                            Planning
+                                                        </div>
+                                                    </div>
+
+                                                    <p class="offset-md-3" style="color: #004C8C; margin-left: 28%;">
+                                                        Please fill customer relationship form for each
+                                                        authorized signature.</p>
+                                                    <div class="form-floating col-sm-6 col-xs-12 offset-md-3">
+                                                        <select formControlName="accOpenOperationMode"
+                                                            aria-label="Floating label select example" id="as1gender"
+                                                            class="form-select border-secondary">
+                                                            <option selected>Select</option>
+                                                            <option id="operationmode1" value="SINGLY">Singly</option>
+                                                            <option id="operationmode2" value="JOINTLY">Jointly</option>
+                                                            <option id="operationmode3" value="SPECIAL INSTRUCTION">
+                                                                Special Instruction</option>
+                                                            <option id="operationmode4" value="OTHERS">Others</option>
+                                                        </select>
+                                                        <label for="constitutionOfCompany"
+                                                            class="col-lg-2 col-4  ml-2">Mode of
+                                                            opration</label>
+                                                    </div>
+
+
+                                                    <div class="form-floating col-sm-6 col-xs-12 offset-md-3 mt-1">
+                                                        <select formControlName="accOpenStatementFrequently"
+                                                            aria-label="Floating label select example" id="as1gender"
+                                                            class="form-select border-secondary">
+                                                            <option selected>Select</option>
+                                                            <option id="Frequently1" value="MONTHLY">Monthly</option>
+                                                            <option id="Frequently2" value="QUARTERLY">Quarterly
+                                                            </option>
+                                                            <option id="Frequently3" value="HALF YEARLY"> Half Yearly
+                                                            </option>
+                                                            <option id="Frequently" value="YEARLY">Yearly</option>
+                                                        </select>
+                                                        <label for="constitutionOfCompany"
+                                                            class="col-lg-2 col-4  ml-2">Account Statement
+                                                            Frequently</label>
+                                                    </div>
+
+
+                                                    <p class="offset-md-4 mt-2"
+                                                        style="color: #004C8C; margin-left: 30%;">(Kindly refer
+                                                        scheduled of charges for any frequency
+                                                        selected)
+                                                    </p>
+                                                </form>
+
+
+
+
+                                                <form [formGroup]="step5"
+                                                    style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;"
+                                                    class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required">
+
+                                                    <h5 class="h2_form text-center mt-3" style="color: #3BB161;"><b>For
+                                                            Company use only</b></h5>
+
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-floating input-group date form_date"
+                                                                data-link-format="yyyy-mm-dd">
+                                                                <input type="date" placeholder=""
+                                                                    formControlName="account_Sourcing_Date"
+                                                                    value="complianceDueDate" class="form-control"
+                                                                    id="complianceDueDate">
+                                                                <label for=""
+                                                                    class="control-label col-md-3 col-sm-3 col-xs-12">Account
+                                                                    Sourcing Date(DD/MM/YYYY) </label>
+
+                                                            </div>
+                                                            <!-- 					<input type="text" class="form-control col-md-3 col-xs-12" id="accsdate" ng-model="CompanyUse.tempCustAccSDate" /> -->
+                                                        </div>
+
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" formControlName="sourceCode"
+                                                                placeholder=""
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="sourcecode">
+                                                            <label for=""
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                id="as1name">Source
+                                                                Code
+                                                                : </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="leadgeneratorcode" placeholder=""
+                                                                formControlName="leadGeneratorCode">
+                                                            <label for=""
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                id="as1name">Lead
+                                                                Generator Code </label>
+                                                        </div>
+
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text"
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="leadconvertorcode" placeholder=""
+                                                                formControlName="leadConvertorCode">
+                                                            <label for=""
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                id="as1name">Lead
+                                                                Convertor Code </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <select
+                                                                class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                required="" id="" formControlName="rMCode">
+                                                                <option value="">Select</option>
+                                                                <option value="R1">R1 </option>
+                                                                <option value="R2">R2 </option>
+                                                                <option value="R3">R3 </option>
+                                                                <option value="R4">R4 </option>
+                                                            </select>
+                                                            <label for=""
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                id="as1name">RM
+                                                                code</label>
+                                                        </div>
+
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" placeholder=""
+                                                                class="form-control col-md-8 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                formControlName="approvedBy" id="approvedby">
+                                                            <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                id="as1name">Approved
+                                                                By
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" placeholder=""
+                                                                class="form-control col-md-3 col-xs-12 ng-pristine ng-untouched ng-valid"
+                                                                id="employeecode" formControlName="employeeCode">
+                                                            <label for="employeeCode"
+                                                                class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                                id="as1name">Employee
+                                                                Code </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="text-center mt-1 align-middle">
+                                                        <button class="btn-info  m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;"
+                                                            (click)="onsubmit5()" type="submit">
+                                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                                            Finish
+                                                        </button>
+
+                                                        <button class="btn-info m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;"
+                                                            (click)="onsubmit5();changeTab('tab5')">
+                                                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                            Cancal
+                                                        </button>
+                                                    </div>
+
+
+                                                    <!-- <div class="actionBar ">
+                                                        <div class="text-center mt-3">
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit5()"><i
+                                                                    class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                            <button type="button" class="btn btn-info  m-lg-4 m-4"
+                                                                (click)="onsubmit5();changeTab('tab5')"><i
+                                                                    class="bi bi-arrow-90deg-right"></i>
+                                                                Next</button>
+                                                        </div>
+                                                    </div> -->
+                                                </form>
+                                            </div>
+
+                                            <div class="tab-pane" [class.active]="activeTab === 'tab6'" id="tab6">
+
+
+                                                <!-- <div id="step-6" class="wizard_content" style="display: none;"> -->
+                                                <form [formGroup]="step6"
+                                                    class="form-horizontal form-label-left ng-pristine ng-invalid ng-invalid-required"
+                                                    style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                    <div>
+
+                                                        <h5 class="h2_form text-center mt-3"
+                                                            style="color: #3BB161; margin-top: 10px;">
+                                                            <b> Product Details</b>
+                                                        </h5>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-1 col-4 col-form-label">TID
+                                                                Number:</label>
+                                                            <div class="col-lg-4 col-4">
+                                                                <input type="text" (keyup.enter)="tidSearch()"
+                                                                    placeholder="Enter" [(ngModel)]="tidToSearch"
+                                                                    formControlName="tid" class="form-control "
+                                                                    id="complianceName">
+
+                                                            </div>
+                                                        </div>
+
+                                                        <table class="table table-bordered  rounded-table"
+                                                            style="margin-top: 10px;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Product</th>
+                                                                    <th width="22%">Assign Date</th>
+                                                                    <th width="22%">Expiry Date</th>
+                                                                    <th width="20%">Billing Cycle</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <select formControlName="productSelect"
+                                                                            class="form-control select ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                            id="productSelect" name="productSelect"
+                                                                            required="">
+                                                                            <option value="" selected="">Select Product
+                                                                            </option>
+                                                                            <option ng-repeat="item in productData"
+                                                                                *ngFor="let data of productList"
+                                                                                [value]="data.productId"
+                                                                                class="ng-binding ng-scope">
+                                                                                {{data.productName}}</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="input-group date form_date"
+                                                                            data-link-format="yyyy-mm-dd">
+                                                                            <input type="date"
+                                                                                formControlName="assignDate"
+                                                                                class="form-control"
+                                                                                id="complianceDueDate">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="input-group date form_date"
+                                                                            id="expDate" data-link-format="yyyy-mm-dd">
+                                                                            <input type="date"
+                                                                                formControlName="expiryDate"
+                                                                                class="form-control"
+                                                                                id="complianceDueDate">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <select
+                                                                            class="form-control select ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                            id="billingCycle" name="billingCycle"
+                                                                            formControlName="billingCycle" required="">
+                                                                            <option value="" selected="selected">Select
+                                                                                Billing Cycle</option>
+                                                                            <option value="Monthly">Monthly</option>
+                                                                            <option value="Quarterly">Quarterly</option>
+                                                                            <option value="Half Yearly">Half Yearly
+                                                                            </option>
+                                                                            <option value="Yearly">Yearly</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- <div class="text-right offset-md-9">
+                                                                    <a class="btn btn-info" id="btnAddProduct"
+                                                                        ng-click="AddProduct()" (click)="onsubmit6()"
+                                                                        style="float:right;">Submit</a>
+                                                                </div> -->
+                                                            </tbody>
+
+                                                        </table>
+                                                        <div class="text-center align-middle"
+                                                            style="margin-top: -20px;">
+                                                            <button class="btn-info  m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;"
+                                                                ng-click="AddProduct()" (click)="onsubmit6()"
+                                                                type="submit">
+                                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                Submit
+                                                            </button>
+
+                                                            <button class="btn-info m-lg-4 m-4 w-25"
+                                                                style="height: 40px; border-radius: 2rem;">
+                                                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                                Cancal
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+
+                                                <form [formGroup]="step61"
+                                                    style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+                                                    <h5 class="h2_form text-center mt-3" style="color: #3BB161;"><b>
+                                                            Billing Details </b></h5>
+                                                    <table class="table table-bordered rounded-table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Assesment Year</th>
+                                                                <th>Product</th>
+                                                                <th>Amount</th>
+                                                                <th>Discount</th>
+                                                                <th>Tax</th>
+                                                                <th>Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+
+                                                                    <input type="text"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="invoiceId" formControlName="invoiceId"
+                                                                        style="display:none;">
+                                                                    <select id="assessmentYear" required=""
+                                                                        formControlName="assesmentYear"
+                                                                        [(ngModel)]="aof61.assesmentYear"
+                                                                        class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                                                                        <option value="" selected="selected">Select
+                                                                        </option>
+                                                                        <option value="2025-2026">2025-2026</option>
+                                                                        <option value="2024-2025">2024-2025</option>
+                                                                        <option value="2023-2024">2023-2024</option>
+                                                                        <option value="2022-2023">2022-2023</option>
+                                                                        <option value="2021-2022">2021-2022</option>
+                                                                        <option value="2020-2021">2020-2021</option>
+                                                                        <option value="2019-2020">2019-2020</option>
+                                                                        <option value="2018-2019">2018-2019</option>
+                                                                        <option value="2017-2018">2017-2018</option>
+                                                                        <option value="2016-2017">2016-2017</option>
+                                                                        <option value="2015-2016">2015-2016</option>
+                                                                        <option value="2014-2015">2014-2015</option>
+                                                                        <option value="2013-2014">2013-2014</option>
+                                                                        <option value="2012-2013">2012-2013</option>
+                                                                        <option value="2011-2012">2011-2012</option>
+                                                                        <option value="2010-2011">2010-2011</option>
+                                                                        <option value="2009-2010">2009-2010</option>
+                                                                        <option value="2008-2009">2008-2009</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td> <select
+                                                                        class="form-control select ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                        name="repeatSelect" required=""
+                                                                        formControlName="prdSrvId"
+                                                                        [(ngModel)]="aof61.prdSrvId"
+                                                                        ng-init="somethingHere = somethingHere || options[0].value">
+                                                                        <option value="" selected="selected">Select
+                                                                            Product
+                                                                        </option>
+                                                                        <option *ngFor="let data of productList"
+                                                                            value={{data.productId}}
+                                                                            class="ng-binding ng-scope">
+                                                                            {{data.productName}}</option>
+
+                                                                    </select>
+                                                                    <input type="text"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        disabled="" style="display: none;">
+                                                                </td>
+                                                                <td><input type="text"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        ng-keyup="calTotal()" id="productFees"
+                                                                        formControlName="itemFees"
+                                                                        [(ngModel)]="aof61.itemFees"></td>
+                                                                <td>
+                                                                    <input type="text" ng-keyup="calTotal()"
+                                                                        formControlName="discountRate"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="disRate" [(ngModel)]="aof61.discountRate">
+                                                                    <input
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="disAmt" formControlName="discountAmount"
+                                                                        [(ngModel)]="aof61.discountAmount"
+                                                                        style="display: none;">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" ng-keyup="calTotal()"
+                                                                        formControlName="taxRate"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="taxRate" [(ngModel)]="aof61.taxRate">
+                                                                    <input
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        id="taxAmt" [(ngModel)]="aof61.taxAmount"
+                                                                        style="display: none;"
+                                                                        formControlName="taxAmount">
+                                                                </td>
+                                                                <td><input type="text" formControlName="itemTotal"
+                                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                                        [disabled]="true"></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="text-center align-middle" style="margin-top: -20px;">
+                                                        <button class="btn-info  m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;"
+                                                            (click)="onsubmit61()" type="submit">
+                                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                                            Add
+                                                        </button>
+
+                                                        <button class="btn-info m-lg-4 m-4 w-25"
+                                                            style="height: 40px; border-radius: 2rem;">
+                                                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                            Cancal
+                                                        </button>
+                                                    </div>
+
+
+                                                    <!-- <div (click)="onsubmit61()"><a class="btn btn-info"
+                                                            style="float:right;">Add</a></div> -->
+
+                                                </form>
+
+                                                <form style="margin-top: 70px;" [formGroup]="step62"
+                                                    style="background-color: #fff; margin-top: 10px; padding: 5px 30px 10px; border-radius: 10px;">
+
+                                                    <!-- <table class="table table-bordered table-hover">
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table> -->
+
+                                                    <h5 class="h2_form text-center mt-3" style="color: #3BB161;"><b>
+                                                            Payment Details </b></h5>
+
+                                                    <input type="text"
+                                                        class="form-control ng-pristine ng-untouched ng-valid"
+                                                        id="accountNumber" formControlName="accountNumber"
+                                                        style="display:none;">
+
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-floating input-group date form_date"
+                                                                data-link-format="yyyy-mm-dd">
+                                                                <input type="date" formControlName="transactionDate"
+                                                                    [(ngModel)]="aof62.transactionDate" placeholder=""
+                                                                    class="form-control" id="complianceDueDate">
+                                                                <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                    for="">Payment
+                                                                    Date</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" required="required"
+                                                                formControlName="amount" placeholder=""
+                                                                class="form-control col-md-1  ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                                                [(ngModel)]="aof62.amount">
+                                                            <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                id="as1name" for="">Amount in
+                                                                Figure</label>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="form-floating col-sm-6 col-xs-12">
+                                                            <select
+                                                                class="form-control select ng-pristine ng-untouched ng-valid"
+                                                                formControlName="paymentMode" id="paymentMode"
+                                                                [(ngModel)]="aof62.paymentMode">
+                                                                <option value="">Select Payment Mode</option>
+                                                                <option value="CASH">CASH</option>
+                                                                <option value="CHEQUE">CHEQUE</option>
+                                                                <option value="NEFT">NEFT</option>
+                                                                <option value="RTGS">RTGS</option>
+                                                                <option value="IMPS">IMPS</option>
+                                                                <option value="ECS">ECS</option>
+                                                                <option value="ONLINE TRANSFER">ONLINE TRANSFER</option>
+                                                                <option value="BANK DEPOSIT">BANK DEPOSIT</option>
+                                                                <option value="SWAP MACHINE">SWAP MACHINE</option>
+                                                            </select>
+                                                            <label for="mode" id="as1name"
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12">Payment
+                                                                Mode:</label>
+                                                        </div>
+
+
+                                                        <div class="form-floating col-md-6 col-sm-6 col-xs-12">
+                                                            <select formControlName="paymentType"
+                                                                class="form-control select ng-pristine ng-untouched ng-valid"
+                                                                id="paymentType" [(ngModel)]="aof62.paymentType">
+                                                                <option value="">------------Select Payment
+                                                                    Type------------
+                                                                </option>
+                                                                <option value="IP">IP</option>
+                                                                <option value="RENEWAL">RENEWAL</option>
+                                                                <option value="OTHER">OTHER</option>
+                                                            </select>
+                                                            <label for="type" id="as1name"
+                                                                class="control-label col-md-2 col-sm-2 col-xs-12">Payment
+                                                                Type:</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-center m-2">
+
+                                                        <div class="form-floating col-sm-6 col-xs-12">
+                                                            <textarea formControlName="discription" placeholder=""
+                                                                class="form-control  ng-pristine ng-untouched ng-valid"
+                                                                [(ngModel)]="aof62.discription"></textarea>
+                                                            <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                                                id="as1name" for="">Payment
+                                                                Description</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actionBar ">
+                                                        <div class="text-center">
+
+                                                            <button type="button" (click)="onsubmit62()"
+                                                                style="border-radius: 20px; padding: 10px 50px 10px;"
+                                                                class="btn btn-info  m-lg-4 m-4">
+                                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                Finish</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row col-lg-12"></div>
+
+                            </div> <!-- /x_content -->
+                        </div>
+                    </div><!-- /.row -->
+                    <!-- </section> -->
+                </div><!-- /.page-content -->
+            </div>

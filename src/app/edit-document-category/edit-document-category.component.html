@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Settings</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Branch</li>
+          </ol>
+        </nav>
+        <div class="container ">
+          <div class="row">
+            <div class="col">
+              <div class="page-header">
+                <h1>
+                    Document Category
+                </h1>
+              </div>
+             
+              
+             
+              </div>
+              <div>
+              <button type="button" routerLink="/set/documentcategory" class="btn btn-info" style="float: right;">
+                View Document Category</button>
+              </div>
+            </div>
+
+
+            <form [formGroup]="complianceForm" class="col-md-12 col-sm-12 col-xs-12 mt-5">
+
+
+                <div class="form-group row">
+                    <label for="id" class="col-lg-1 col-4   col-form-label mr-5">ID :</label>
+                    <div class="col-lg-4 col-8">
+                        <input type="text" formControlName="id" class="form-control" [(ngModel)]="id" id="complianceName">
+                    </div>
+                    <label for="name" class="col-lg-1 col-4   col-form-label mr-5 mt-sm-4 mt-lg-0 ">Name :</label>
+                    <div class="col-lg-4 col-8">
+                        <input type="text" formControlName="name" class="form-control mt-sm-4 mt-lg-0" [(ngModel)]="cname" id="complianceName">
+                    </div>
+                </div>
+              <h4 class="mt-3">Types :</h4>
+                <table class="table table-bordered table-striped mt-4">
+                    <!-- <thead>
+                      <tr>
+                        <th scope="col" width="5%" class="sorting_asc" tabindex="0" aria-controls="branch_datatable"
+                          rowspan="1" colspan="1" aria-label="Sr.No.: activate to sort column descending" style="width: 60px;"
+                          aria-sort="ascending">Sr.No.</th>
+                        <th scope="col" width="10%" class="sorting" tabindex="0" aria-controls="branch_datatable" rowspan="1"
+                          colspan="1" aria-label="Branch ID: activate to sort column ascending" style="width: 127px;">Branch
+                          ID</th>
+                        
+                      </tr>
+                    </thead> -->
+                   
+                    <tbody>
+                      <tr *ngFor="let typ of types">      
+                        <td style="width: 50px">{{typ.name}}</td>                       
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                  <div>
+                    <label>Type : &nbsp;</label>    
+                    <input formControlName="tname"  type="text"  >
+                     <br>
+                     <br> 
+                  </div>
+                  
+
+                  <!-- <form [formGroup]="userForm" >
+                    <br>
+                   <br>  
+                   <div *ngFor="let phone of getTypesFormControls();">
+                     <label>Type : &nbsp;</label>    
+                     <input formControlName="tname" type="text"  >
+                      <br>
+                      <br> 
+                   </div>
+                   <br>  
+                   <button (click)="addTypeNew()">Add Type</button>
+                   <br>
+                  
+                 </form> -->
+                  <!-- <div class="container1">
+                    <button class="add_form_field" ng-click="addTypeField()" >Add New Type &nbsp;
+                        <span style="font-size:16px; font-weight:bold;">+ </span>
+                    </button>
+                    <div><input type="text" formControlName="tname" name="typeArr" [(ngModel)]="tnames"></div>
+                </div> -->
+                <div class="clearfix form-actions col-md-12 col-sm-12 col-xs-12 mt-5">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="col-lg-2 col-5 btn btn-info m-lg-4" type="submit" (click)="addType()">
+                            <!-- <i class="ace-icon fa fa-check bigger-110"></i> -->
+                            Update
+                        </button>
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="col-lg-2 col-5 btn canc m-lg-4" (click)="reset()">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>

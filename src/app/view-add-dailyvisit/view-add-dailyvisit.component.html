@@ -1,0 +1,188 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+        <li class="">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a
+                href="/set">&#160;Home&#160;</a>
+
+        </li>
+
+        <li class=" active" style="color: #004C8C;" aria-current="page">
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="/set/alldailyvisits">
+                &#160;Daily Visits&#160;</a>
+
+        </li>
+        <li class="breadcrumb-item active" style="color: #3bb161;" aria-current="page"><i
+                class="fa-solid fa-chevron-right"></i>&#160;View Daily Visits</li>
+    </ol>
+</nav>
+<!-- ///set/alldailyvisits -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <b>
+                                <h5 style="color: #004C8C; margin-top: -5px;">
+                                    Daily Visit
+                                </h5>
+                            </b>
+                        </div>
+
+                        <div>
+                            <button type="button" routerLink="/set/alldailyvisits" class="btn btn-info"
+                                style="float: right; margin-top: -30px; border-radius: 20px;">
+                                View All Daily Visit
+                            </button>
+                        </div>
+
+
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 box " style="margin-top: 15px;">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li [class.active]="activeTab === 'tab1'"  ><a (click)="changeTab('tab1')" style="padding: 20px 50px  10px;">All
+                                            Visits</a></li>
+                                    <li style="margin-left: 5px;" [class.active]="activeTab === 'tab2'"> <a (click)="changeTab('tab2')" style="padding: 20px 30px  10px;">Add Visit
+                                            Details</a></li>
+                                </ul>
+
+                                <div class="tab-content" style=" background-color: #fff; border-radius: 5px;">
+                                    <div class="tab-pane active " [class.active]="activeTab === 'tab1'" id="tab1">
+                                        <table class="table rounded-table" style="border: solid #3bb161;">
+                                            <thead>
+                                                <tr>
+                                                    <th width="10%">Sr.No</th>
+                                                    <th width="15%">Date</th>
+                                                    <th width="60%">Description</th>
+                                                    <th width="15%">Next Visit Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let data of dvStatusList ,let index = index ">
+                                                    <td>{{index+1}}</td>
+                                                    <td>{{data.visit_date}}</td>
+                                                    <td>{{data.description}}</td>
+                                                    <td>{{data.next_visit_date}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2">
+                                        <form class="form-horizontal" [formGroup]="viewAddDailyvisitForm"
+                                            ((ngSubmit))="onSubmit1()" [formGroup]="viewAddDailyvisitForm">
+
+                                            <div class="form-floating row mb-3 flex-parent jc-center">
+                                                <!-- <p>ID : {{lead.tmpCustId}} name : {{lead.description}}</p> -->
+
+                                                <div class="form-floating col-lg-4 col-6">
+                                                    <input type="date" formControlName="visitDate"
+                                                        [(ngModel)]="lead.visitDate" class="form-control"
+                                                        id="complianceDueDate">
+                                                    <label for="visitDate" class="col-lg-2 col-4 col-form-label">Visit
+                                                        Date:</label>
+                                                </div>
+
+
+                                                <div class="form-floating col-lg-4 col-6">
+                                                    <select formControlName="status" [(ngModel)]="lead.status"
+                                                        class="form-select">
+                                                        <option value="" selected>Select Location </option>
+                                                        <option value="INTERESTED">INTERESTED </option>
+                                                        <option value="NOT INTERESTED">NOT INTERESTED </option>
+                                                    </select>
+                                                    <label for="status"
+                                                        class="col-lg-1 col-4 col-form-label ml-2">Status
+                                                        :</label>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-floating row mb-3 ">
+
+                                                <div class="form-floating col-lg-4 col-6 offset-md-2">
+                                                    <textarea class="form-control" id="address" rows="3"
+                                                        [(ngModel)]="lead.description" formControlName="description"
+                                                        required> </textarea>
+                                                    <label for="description"
+                                                        class="col-lg-2 col-4   col-form-label mr-5">Description</label>
+                                                </div>
+                                            </div>
+                                            <!-- *******************bot***************** -->
+                                            <!-- <div class="container mt-3"> -->
+
+                                            <!-- <form action="/action_page.php" class="was-validated"> -->
+
+
+                                            <div class="form-check mb-3 was-validated offset-md-2">
+
+                                                <label class="form-check-label" for="isnxt">Is Next
+                                                    Date:</label>
+                                                <input class="form-check-input" type="checkbox" formControlName="isnxt"
+                                                    [(ngModel)]="lead.isnxt" id="myCheck" name="isnxt" required>
+
+                                                <div class="valid-feedback ">
+                                                    <div class="form-group row mb-3">
+                                                        <div class="form-floating  col-lg-4 col-8">
+                                                            <input type="date" [(ngModel)]="lead.nextVisitDate"
+                                                                formControlName="nextVisitDate" class="form-control"
+                                                                id="complianceDueDate">
+                                                            <label for="nextVisitDate"
+                                                                class="col-lg-2 col-4 col-form-label ml-2">Next
+                                                                Visit Date:</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="invalid-feedback"></div> -->
+                                            </div>
+
+
+                                            <!-- </form> -->
+                                            <!-- </div> -->
+
+                                            <!-- </div> -->
+
+
+
+
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <p><b>Note : </b>Once you select status INTERESTED then this customer
+                                                    comes in Lead.</p>
+                                            </div>
+
+                                            <div class="text-center mt-4 align-middle">
+                                                <button class="btn-info  m-lg-4 m-4 w-25"
+                                                    style="height: 40px; border-radius: 2rem;" (click)="onSubmit1()"
+                                                    ng-click="saveVisit()" type="submit">
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                    Submit
+                                                </button>
+
+                                                <button class="btn-info m-lg-4 m-4 w-25"
+                                                    style="height: 40px; border-radius: 2rem;">
+                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                    Cancal
+                                                </button>
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <div class="col-md-11 col-sm-11 col-xs-11">
+                                                    <input type="submit" class="btn btn-info" (click)="onSubmit1()"
+                                                        ng-click="saveVisit()" style="margin-right: 10px;">
+                                                </div>
+                                            </div> -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item">
+      <i class="ace-icon fa fa-home home-icon" style="margin-right: 10px; color: #004C8C; text-decoration: none;"></i><a
+        href="/set">Home&#160;</a>
+    </li>
+    <li class="" style="color: #004C8C;"  aria-current="page"> <i class="fa-solid fa-chevron-right"></i> Report&#160;</li>
+    <li class="active" style="color: #3bb161;">
+      <i class="fa-solid fa-chevron-right"></i>
+      All Followup
+    </li>
+    <!-- <li class="breadcrumb-item active" style="color: #004C8C;" aria-current="page">Add New Customer</li> -->
+  </ol>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <b>
+                <h5 style="color: #004C8C; margin-top: -5px;">
+                  Followup
+                </h5>
+              </b>
+            </div>
+
+
+
+
+            <div class="container pb-2" style=" margin-top: -10px; background-color: #fff; border-radius: 4px;">
+              <!-- <div class="row"> -->
+
+              <form [formGroup]="InteractionForm" class="col-md-12 col-sm-12 col-xs-12 mt-3">
+
+                <div class="row">
+                  <div class="form-floating m-3 col-lg-3 col-md-10 col-11 m-lg-0">
+                    <select formControlName="branch" style="border-radius: 10px;" class="form-select mt-2">
+                      <option value="">Select Status</option>
+                      <option *ngFor="let branch of branches" value={{branch.branchName}}>{{branch.branchName}}</option>
+                    </select>
+                    <label for="location">Select Branch :</label>
+                  </div>
+
+                  <div class="form-floating col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <input type="date" formControlName="fromDate" style="border-radius: 10px;" class="form-control mt-2">
+                    <label for="department">From Date</label>
+                  </div>
+
+                  <div class="form-floating col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <input type="date" formControlName="toDate" style="border-radius: 10px;" class="form-control mt-2">
+                    <label for="department">To Date</label>
+                  </div>
+
+                  <div class="text-end col-lg-3 col-md-10 col-11 m-3 m-lg-0 form-group">
+                    <button type="button" style="border-radius: 20px; padding-left: 20px; padding-right: 20px;"
+                      class="btn btn-info" (click)="onSubmit()"><i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit</button>
+
+                    <button type="Reset" style="border-radius: 20px;" class="btn btn-info  m-lg-3 m-4">
+                      <i class="ace-icon fa fa-undo bigger-110"></i>
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="container " *ngIf="showtable">
+              <div class="row">
+                <div class="col">
+
+                  <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer" style="margin-top: 15px; color: #004C8C;">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-8">
+                        <div class="dataTables_length" id="branch_datatable_length">
+                          <p>Show
+                            <select name="branch_datatable_length" style="border-radius: 10px; border: 1px solid #3bb161;"
+                              (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize" aria-controls="branch_datatable">
+                              <!-- [(ngModel)]="resultsPerPage" -->
+                              <option [ngValue]="10">10</option>
+                              <option [ngValue]="25">25</option>
+                              <option [ngValue]="50">50</option>
+                              <option [ngValue]="100">100</option>
+                            </select> Entries
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row" style="margin-top: -40px;">
+
+                    <div class="col-10 col-md-10">
+
+                      <div class="offset-md-7 offset-lg-11">
+                        <div class="dataTables_filter" id="branch_datatable_filter">
+                          <p>
+                            <input type="text" style="border-radius: 20px; height: 36px; margin-left: 80px;" [(ngModel)]="SearchText"
+                              (input)="applyFilter()" placeholder="Search..." aria-controls="branch_datatable">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <table class="table rounded-table">
+                    <thead>
+                      <tr>
+                        <th>Sr.No.</th>
+                        <th>Type</th>
+                        <th>Customer</th>
+                        <th> Date</th>
+                        <th> Status </th>
+                        <th>Next Date</th>
+                        <th>Description</th>
+                        <th>Employee</th>
+                        <!-- <th scope="col" width="10%" class="sorting" tabindex="0" aria-controls="branch_datatable" rowspan="1"
+                        colspan="1" aria-label="Branch Address: activate to sort column ascending" style="width: 149px;">
+                        Status</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="let data of AllInteractionList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                        <td>{{index+1}}</td>
+                        <td>{{data.followupType}}</td>
+                        <td>{{data.custName}}</td>
+                        <td>{{data.date}}</td>
+                        <td>{{data.status}}</td>
+                        <td>{{data.nextDate}}</td>
+                        <td>{{data.desc}}</td>
+                        <td>{{data.empName}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-between p-2">
+                    <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                      aria-live="polite">
+                      Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                        pageSize}} of {{AllInteractionList.length}} entries </div>
+                        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                          (pageChange)="refreshCountries()">
+                        </ngb-pagination>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

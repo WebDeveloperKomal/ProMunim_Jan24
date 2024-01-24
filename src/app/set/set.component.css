@@ -1,0 +1,23 @@
+
+/* *{
+  font-family: 'Comfortaa';
+} */
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; Set container height to full viewport height */
+  }
+  
+  .content-container {
+    flex: 1; /* Let the content container fill the remaining vertical space */
+    display: flex;
+    height: 100%;
+    
+    
+  }
+  
+  .page-content {
+    flex: 1; /* Allow the page content to fill the remaining horizontal space */
+    /* padding: 20px; Add padding to the page content (adjust as needed) */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  }

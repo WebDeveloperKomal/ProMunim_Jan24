@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: "Comfortaa", sans-serif;
+
+}
+a {
+    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none; /* Remove underline */
+    color: #004C8C;
+}
+
+.rounded-table {
+    /* rounded-table */
+    border-radius: 7px; /* You can adjust the value to control the degree of rounding */
+    overflow: hidden;    /* This is important to ensure the border-radius is applied to the corners */
+}

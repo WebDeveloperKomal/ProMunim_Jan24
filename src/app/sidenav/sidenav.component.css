@@ -1,0 +1,93 @@
+
+
+.sidenav{
+    height:  100vh;
+    background-color: white;
+    overflow-x: hidden;
+    line-height: 43px;
+    color: #42526E;
+    padding-left: 5px;
+  }
+  
+  .border-right {
+    border-right: 1px solid #dee2e6!important;
+    width: 230px;
+  }
+  
+  .active {
+      font-weight: bold;
+    }
+  
+    .dropdown-btn {
+    
+      text-align: left;
+      
+      border: none;
+    
+      cursor: pointer;
+      outline: none;
+    } 
+  
+     
+  .sidenav button:hover {
+    background: rgb(231, 240, 248);
+    color: #349753;
+    
+    border-radius: 12px; 
+  } 
+  
+  .sidenav button {
+   
+    width: 95%; 
+    border: none;
+    cursor: pointer;
+  }
+  .sidenav[_ngcontent-ng-c2657121460]   button[_ngcontent-ng-c2657121460] {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  
+  .list-unstyled  a{
+     font-size: 14px;
+     text-decoration: none;
+     color: #42526E; 
+     
+     
+  }
+  
+  a{
+    text-decoration: none;
+    
+  
+  }
+  .submenu{
+    background-color: white;
+    text-align: left;
+    line-height: 35px;
+    padding-left: 20px;
+  }
+  .submenu :hover{
+    color: #349753;
+  
+  }
+   
+  
+  
+  
+  .dropdown-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  
+  @media(max-width:576px){
+    .sidenav{
+        display: none;
+    }
+  }
+  

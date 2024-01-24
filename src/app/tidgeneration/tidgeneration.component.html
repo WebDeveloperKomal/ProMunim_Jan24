@@ -1,0 +1,139 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item">
+      <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px; color: #004C8C; "></i><a href="/set">Home
+        &#160;</a>
+      
+    </li>
+
+    <li class=" active" style="color: #3BB161;" aria-current="page">
+      <i class="fa-solid fa-chevron-right"></i>
+      TID Generation&#160;</li>
+  </ol>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header"><b>
+                <h5 style="color: #004C8C; margin-top: -5px;">
+                  TID Generation
+                </h5>
+              </b>
+            </div>
+
+            <div>
+              <button type="button" routerLink="/set/alltid" class="btn btn-info"
+                style="float: right; margin-top: -30px; border-radius: 20px;">
+                View All TID's</button>
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12 box" style="margin-top: 15px;">
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs ">
+
+                  <li [class.active]="activeTab === 'tab1'"><a (click)="changeTab('tab1')" style="padding: 20px 50px  10px;">
+                      Update Status</a></li>
+                  <li [class.active]="activeTab === 'tab2'"><a (click)="changeTab('tab2')" style="padding: 20px 30px  10px;">Update Courier Details</a>
+                  </li>
+                </ul>
+                <div class="tab-content " style=" background-color: #fff; border-radius: 5px;">
+                  <div class="tab-pane active mt-5" [class.active]="activeTab === 'tab1'" id="tab1">
+                    <form class="form-horizontal" [formGroup]="complianceForm" ((ngSubmit))="onSubmit()">
+                      <div class="col-lg-offset-1">
+
+                        <div class="flex-parent jc-center form-group row">
+
+                          <div class="form-floating col-lg-4 col-8">
+                            <select formControlName="status" [(ngModel)]="tidstatus.status" class="form-select">
+                              <option value="" selected>----------- Select----------</option>
+                              <option value="Pending">Pending </option>
+                              <option value="Complete">Complete</option>
+                            </select>
+                            <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2">Status</label>
+                          </div>
+                        </div>
+
+                        <div class="text-center mt-4 align-middle">
+                          <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                              (click)="onSubmit()" ng-click="saveVisit()" type="submit">
+                              <i class="ace-icon fa fa-check bigger-110"></i>
+                              Submit 
+                          </button>
+
+                          <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                              <i class="ace-icon fa fa-undo bigger-110"></i>
+                              Cancal
+                          </button>
+                      </div>
+
+                        <!-- <div class="form-group">
+                          <div class="col-md-11 col-sm-11 col-xs-11">
+                            <input type="submit" class="btn btn-info m-lg-4 m-4" (click)="onSubmit()"
+                              ng-click="saveVisit()" style="margin-right: 10px;">
+
+                            <button type="reset" class="btn canc m-lg-4 m-4">
+                              Cancel
+                            </button>
+                          </div>
+                        </div> -->
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="tab-pane mt-5" [class.active]="activeTab === 'tab2'" id="tab2">
+                    <form class="form-horizontal" [formGroup]="complianceForm" ((ngSubmit))="onSubmit1()">
+                      <!-- courierId -->
+                      <div class="col-lg-offset-1">
+
+                        <div class="flex-parent jc-center form-group row">
+
+                          <div class="form-floating col-lg-4 col-8">
+                            <select formControlName="courierId" [(ngModel)]="tidstatus.courierId" class="form-select">
+                              <option value="" selected>Select Location</option>
+                              <option value="1">INTERESTED </option>
+                              <option value="0">NOT INTERESTED</option>
+                            </select>
+                            <label for="taxLink" class="col-lg-1 col-4 col-form-label ml-2">Courier Address</label>
+                          </div>
+
+                        </div>
+
+                        <div class="text-center mt-4 align-middle">
+                          <button class="btn-info  m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;"
+                              (click)="onSubmit1()" ng-click="saveVisit()" type="submit">
+                              <i class="ace-icon fa fa-check bigger-110"></i>
+                              Submit 
+                          </button>
+
+                          <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                              <i class="ace-icon fa fa-undo bigger-110"></i>
+                              Cancal
+                          </button>
+                      </div>
+
+                        <!-- <div class="form-group">
+                          <div class="col-md-11 col-sm-11 col-xs-11">
+                            <input type="submit" class="btn btn-info m-lg-4 m-4" (click)="onSubmit1()"
+                              ng-click="saveVisit()" style="margin-right: 10px;">
+
+                            <button type="reset" class="btn canc m-lg-4 m-4">
+                              Cancel
+                            </button>
+                          </div>
+                        </div> -->
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

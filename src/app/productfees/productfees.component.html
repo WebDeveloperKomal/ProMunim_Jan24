@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">Settings</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Product Fees</li>
+        </ol>
+      </nav>
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <h1>
+                  Product Fees
+              </h1>
+            </div>
+            <div>
+              <button *ngIf="insertproductfees" type="button" routerLink="/set/add-productFees" class="btn btn-info" style="float: right;">Add
+                Product Fees</button>
+              </div>
+            <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer">
+              <div class="row" style="margin-top: 7%;">
+                <div class="col-lg-9 col-md-8">
+                  <div class="dataTables_length" id="branch_datatable_length">
+                    <p>Show
+                      <select name="branch_datatable_length" (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize"
+                        aria-controls="branch_datatable">
+                        <!-- [(ngModel)]="resultsPerPage" -->
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="25">25</option>
+                        <option [ngValue]="50">50</option>
+                        <option [ngValue]="100">100</option>
+                      </select> entries
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                  <div class="dataTables_filter" id="branch_datatable_filter">
+                    <p>Search:
+                      <input type="text" [(ngModel)]="SearchText" (input)="applyFilter()" placeholder=""
+                        aria-controls="branch_datatable">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Sr.No</th>
+                         <th>Product ID</th>
+                          <th>Product Name</th>
+                          <th>Product Range</th>
+                          <th>Branch Type</th>
+                          <th>Fees</th>
+                          <th *ngIf="view || updateproductfees || deleteproductfees">Action</th>
+                          
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                *ngFor="let data of ProductFeeList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+                <td>{{index+1}}</td>
+                <td>{{data.productId}}</td>
+                <td>{{data.productName}}</td>
+                <td>{{data.minValue}} - {{data.maxValue}}</td>
+                <td>{{data.areaType}}</td>
+                <td>{{data.fees}}</td>
+                  <td *ngIf="view || updateproductfees || deleteproductfees">
+                    <button *ngIf="updateproductfees" class="btn btn-xs" style="font-size: 13px; background-color:#004C8C!important; color: white;" (click)="edit(data.productFeeId)" >
+                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                    </button>&nbsp;&nbsp;
+                    <button *ngIf="deleteproductfees" class="btn btn-xs" style=" font-size: 13px; background-color:#DC3545!important; color: white;" (click)="delete(data.productFeeId)" >
+                    <!-- <i class="fa fa-trash"  aria-hidden="true"></i> -->
+                    <i class="fa-solid fa-trash-can"></i>
+                    </button>
+
+                </td>
+                  <!-- <td></td> -->
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-between p-2">
+              <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+                aria-live="polite">
+                Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize :
+                  pageSize}} of {{ProductFeeList.length}} entries </div>
+                  <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                    aria-label="Default pagination"></ngb-pagination>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

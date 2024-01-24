@@ -1,0 +1,467 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: rgb(255, 255, 255);">
+    <li class="breadcrumb-item" style="color: #004C8C;">
+      <i class="ace-icon fa fa-home home-icon" style="margin-right: 10px;  color: #004C8C;"></i><a
+        href="/set">Home&#160;</a>
+    </li>
+
+    <li class="active" style="color: #3BB161;">
+      <i class="fa-solid fa-chevron-right"></i>
+      Employee
+    </li>
+    <!-- <li class="breadcrumb-item active" style="color: #004C8C;" aria-current="page">Add New Customer</li> -->
+  </ol>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+            <div class="page-header">
+              <b>
+                <h5 style="color: #004C8C; margin-top: -5px;">
+                  Employee
+                </h5>
+              </b>
+            </div>
+          </div>
+        </div>
+
+        <div class="container box pb-2" style="border-radius: 4px; background-color: #fff; margin-top: 0px;">
+
+          <form [formGroup]="employeeForm" class=" col-md-12 col-sm-12 col-xs-12 mt-1">
+            <div class="row">
+              <div class="form-floating col-lg-3 col-md-10 col-11 m-lg-0">
+                <select formControlName="location" style="border-radius: 12px;" class="form-select mt-2">
+                  <option value="" selected>Select Location</option>
+                  <option *ngFor="let branch of branches" [value]="branch.branchName">{{ branch.branchName }}
+                  </option>
+                </select>
+                <label for="location">Select Location :</label>
+              </div>
+
+              <div class="form-floating col-lg-3 col-md-10 col-11 m-lg-0">
+                <select formControlName="maindepartment" style="border-radius: 12px;" class="form-select mt-2">
+                  <option value="" selected>Select Main Department</option>
+                  <option *ngFor="let data of mainDeps" [value]="data.mainDepName">{{ data.mainDepName }}
+                  </option>
+                </select>
+                <label for="maindepartment">Select Main Department :</label>
+              </div>
+
+              <div class="form-floating col-lg-3 col-md-10 col-11 m-lg-0">
+                <select formControlName="department" style="border-radius: 12px;" class="form-select mt-2">
+                  <option value="" selected>Select Department</option>
+                  <option *ngFor="let data of deps" [value]="data.departmentName">{{ data.departmentName }}
+                  </option>
+                </select>
+                <label for="department">Select Department :</label>
+              </div>
+
+              <div class="text-end col-lg-3 col-md-10 col-11 ml-l-h5 m-3 m-lg-0 form-group">
+                <button type="button" style="border-radius: 20px;" class="btn btn-info"><i
+                    class="ace-icon fa fa-check bigger-110"></i>
+                  Submit</button>
+
+                <button type="reset" style="border-radius: 20px;" class="btn btn-info  m-lg-3 m-4">
+                  <i class="ace-icon fa fa-undo bigger-110"></i>
+                  Reset
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="row mt-3">
+
+          <div class="col-10 col-md-10">
+
+            <div class="offset-md-7 offset-lg-9">
+              <div class="dataTables_filter" id="branch_datatable_filter">
+                <p>
+                  <input type="text" style="border-radius: 20px; height: 36px;" [(ngModel)]="SearchText"
+                    (input)="applyFilter()" placeholder="Search..." aria-controls="branch_datatable">
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-1">
+            <button *ngIf="insertemployee" id="bt1" type="button" routerLink="/set/add-employee" class="btn btn-info"
+              style="border-radius: 20px; margin-left: -20%;">
+              Add Employee</button>
+          </div>
+
+        </div>
+
+        <div id="branch_datatable_wrapper" class="dataTables_wrapper no-footer" style="margin-top: -35px;">
+          <div class="row">
+            <div class="col-lg-9 col-md-8" style="color: #004C8C;">
+              <div class="dataTables_length" id="branch_datatable_length">
+                <p>Show
+                  <select name="branch_datatable_length" style="border-radius: 20px; border: 1px solid #3BB161;"
+                    (ngModelChange)="refreshCountries()" [(ngModel)]="pageSize" aria-controls="branch_datatable">
+                    <!-- [(ngModel)]="resultsPerPage" -->
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                  </select> Entries
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="table rounded-table">
+          <thead>
+            <tr>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Emp Code</th>
+              <th>Employee Name</th>
+              <th>Contact No.</th>
+              <th>Branch</th>
+              <th>Department</th>
+              <th>Role</th>
+              <th *ngIf="view || updateemployee || deleteemployee">Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let data of EmployeesList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+              <td>{{index+1}}</td>
+              <td>{{data.empCode}}</td>
+              <td>{{data.firstName}} {{data.middleName}} {{data.lastName}}</td>
+              <td>{{data.contactNo}}</td>
+              <td>{{data.branchName}}</td>
+              <td>{{data.mainDepName}} - {{data.depName}}</td>
+              <td>{{data.roleName}}</td>
+              <td *ngIf="view || updateemployee || deleteemployee">
+
+                <button *ngIf="view" class="btn btn-xs" style="font-size: 13px; color: white;" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1" (click)="ShowDetails(data)">
+                  <!-- (click)="showDetails(data)" -->
+                  <i class="ace-icon fa fa-info bigger-120" style="color: #004C8C;"></i>
+                </button>&nbsp;&nbsp;
+
+                <button *ngIf="updateemployee" class="btn btn-xs" style="font-size: 13px; color: white;"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="ShowDetails(data)">
+                  <i class="fa-solid fa-pen-to-square fa-lg" style="color: #3BB161;"></i>
+                </button>&nbsp;&nbsp;
+
+                <button *ngIf="deleteemployee" class="btn btn-xs" style=" font-size: 13px;  color: white;"
+                  (click)="delete(data.empId)">
+
+                  <i class="fa-solid fa-trash-can" style="color: red;"></i>
+                </button>
+
+
+
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="background-color: #e5edf3;">
+                      <div class="modal-header">
+                        <h5 class="modal-title offset-md-4" id="exampleModalLabel">Employee Info</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="row col-12 text-center" style="margin-top: 10px;">
+                        <a class="navbar-brand " href="/set/employee" style="margin-left: 20px;">
+                          <img src="\assets\MaheshSir.jpg" width="130" height="130px"
+                            style="border-radius: 50%; border: 5px solid #3BB161;">
+                          <button class="btn" style="background-color: #D15B47; margin-top: 70px;"
+                            (click)="deletePhoto()">
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                          <!-- <p style="margin-top: -25px; margin-left: 100px;">Edit</p> -->
+                        </a>
+                      </div>
+
+                      <div class="modal-body">
+                        <table class="table rounded-table " style="border-radius: 4px; border: 1px solid #004C8C;">
+                          <tr
+                            *ngFor="let data of dataarray  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize,let index = index ">
+
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Employee Code</th>
+                            <td style="text-align: center;">{{ selecteddata?.empCode }}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Employee Full Name</th>
+                            <td style="text-align: center;">{{selecteddata?.firstName}} {{selecteddata?.middleName}}
+                              {{selecteddata?.lastName}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Date Of Birth</th>
+                            <td style="text-align: center;">{{selecteddata?.dob}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Joining Date.</th>
+                            <td style="text-align: center;">{{selecteddata?.joiningDate}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Contact No.</th>
+                            <td style="text-align: center;">{{selecteddata?.contactNo}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">User Name</th>
+                            <td style="text-align: center;">{{selecteddata?.userName}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Profile User Id.</th>
+                            <td style="text-align: center;">{{selecteddata?.proUserId}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Branch</th>
+                            <td style="text-align: center;">{{selecteddata?.branchName}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">Department</th>
+                            <td style="text-align: center;">{{selecteddata?.depName}}</td>
+                          </tr>
+                          <tr>
+                            <th style="width: 50%; padding: 5px 30px 0px;">RM Code</th>
+                            <td style="text-align: center;">{{selecteddata?.rmCode}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header ">
+                        <h5 class="modal-title offset-md-3" id="exampleModalLabel">Update Employee</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+
+                        <form [formGroup]="employeeForm1" class="col-md-12 col-sm-12 col-xs-12 mt-2 offset-md-1">
+                          <div class="container">
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8">
+                                <input type="text" formControlName="empId" style="border-radius: 12px; width: 350px;"
+                                  placeholder="Emp Id" [(ngModel)]="employee.empId" class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Emp Id</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="employeeId"
+                                  style="border-radius: 12px;   width: 350px; " [(ngModel)]="employee.empCode"
+                                  placeholder="Employee Id" class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Employee Id</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="firstName"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="First Name"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">First Name</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-lg-8 col-md-8 col-8 ">
+                                <input type="text" formControlName="middleName"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Middle Name"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Middle Name: *</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="lastName"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Last Name"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Last Name: *</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="date" formControlName="dateOfBirth"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Date Of Birth"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Date Of Birth:
+                                  *</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-lg-8 col-md-8 col-8 ">
+                                <input type="date" formControlName="joiningDate"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Joining Date"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Joining Date:
+                                  *</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="contactNo"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Contact Number"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Contact Number</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="email" style="border-radius: 12px;  width: 350px; "
+                                  placeholder="User Name" class="form-control">
+                                <label class="col-lg-4 col-4 control-label">User Name</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-lg-8 col-md-8 col-8 ">
+                                <select formControlName="branchId" style="border-radius: 12px;  width: 350px; "
+                                  class="form-select">
+                                  <option value="">-----------Select------------------------ </option>
+                                  <option *ngFor="let branch of branches" value={{branch.branchId}}>
+                                    {{branch.branchName}}</option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Select Location:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <select class="form-select" style="border-radius: 12px;  width: 350px; "
+                                  formControlName="mainDepId" id="status">
+                                  <option value="">----------- Select Main Department----------- </option>
+                                  <option *ngFor="let mainDep of mainDeps" value={{mainDep.id}}>{{mainDep.mainDepName}}
+                                  </option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Select Main Department:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <select class="form-select" style="border-radius: 12px;  width: 350px; "
+                                  formControlName="depId" id="status">
+                                  <option *ngFor="let dep of deps" value={{dep.departmentID}}>{{dep.departmentName}}
+                                  </option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Select
+                                  Department:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <select formControlName="roleId" style="border-radius: 12px;  width: 350px; "
+                                  class="form-select">
+                                  <option value="">-----------Select------------------------ </option>
+                                  <option *ngFor="let role of roles" value={{role.roleId}}>{{role.roleName}}</option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Select Role
+                                  Name:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <select class="form-select" style="border-radius: 12px;  width: 350px; "
+                                  formControlName="rmCode" id="status">
+                                  <option value="">----------- Select Customer----------- </option>
+                                  <option value="HOT">HOT </option>
+                                  <option value="WARM">WARM </option>
+                                  <option value="COLD">COLD </option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Select RM
+                                  Code:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <select formControlName="assignedBranch" style="border-radius: 12px;  width: 350px; "
+                                  class="form-select">
+                                  <option value="">-----------Select------------------------ </option>
+                                  <option *ngFor="let branch of branches" value={{branch.branchName}}>
+                                    {{branch.branchName}}</option>
+                                </select>
+                                <label class="col-lg-4 col-4 control-label">Assigned
+                                  Branches:*</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group row mb-1">
+                              <div class="form-floating col-md-8 col-8 ">
+                                <input type="text" formControlName="profileUserId"
+                                  style="border-radius: 12px;  width: 350px; " placeholder="Profile UserId"
+                                  class="form-control">
+                                <label class="col-lg-4 col-4 control-label">Profile UserId</label>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group row mb-1">
+                            <div class="form-floating mt-1">
+                              <img [src]="url" alt="">
+                              <input type="file" id="lname" placeholder="Select Photo" (change)="onFileSelected($event)"
+                                name="lname">
+                              <label class="col-lg-4 col-4  col-form-label mr-5">Select Photo: *</label>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+
+                      <div class="text-center align-middle" style="margin-top: 0px;">
+                        <button class="btn-info m-lg-4 w-25" style="height: 40px; border-radius: 2rem; "
+                          (click)="update()" type="submit">
+                          <i class="ace-icon fa fa-check bigger-110"></i>
+                          Update
+                        </button>
+
+                        <button class="btn-info m-lg-4 m-4 w-25" style="height: 40px; border-radius: 2rem;">
+                          <i class="ace-icon fa fa-undo bigger-110"></i>
+                          Close
+                        </button>
+                      </div>
+
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="update()">Update</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+          <div class="dataTables_info mt-3" style="font-size: 14px;" id="branch_datatable_info" role="status"
+            aria-live="polite">
+            Showing {{(page - 1) * pageSize + 1}} to {{(page * pageSize < collectionSize) ? page * pageSize : pageSize}}
+              of {{EmployeesList.length}} entries </div>
+              <ngb-pagination [pageSize]="25" [collectionSize]="collectionSize" [(page)]="page"
+                aria-label="Default pagination"></ngb-pagination>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

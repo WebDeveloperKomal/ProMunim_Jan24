@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <i class="ace-icon fa fa-home home-icon " style="margin-right: 10px;"></i><a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">My Account</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+            </nav>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header">
+                            <h1>
+                                User Profile
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-info" style="margin-bottom:10px">
+                            <div class="clearfix">
+                                <ul style="list-style-type: none;">
+                                    <li class="col-md-6 t_margin20">
+                                        <div class="box box-primary">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Your Profile</h3>
+                                            </div>
+
+                                            <div class="box-body">
+                                                <table class="customerssummarystats" cellspacing="0" cellpadding="5">
+                                                    <tbody>
+                                                        <tr class="altrow">
+                                                            <td class="width50">Employee Id </td>
+                                                            <td class="width80">:- {{user.employeeId}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="width50">Full Name</td>
+                                                            <td class="width80">:- {{user.firstName}} {{user.middleName}} {{user.lastName}}</td>
+                                                        </tr>
+                                                        <tr class="altrow">
+                                                            <td>Contact No</td>
+                                                            <td class="width50">:- {{user.contactNo}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="width50">Joining Date</td>
+                                                            <td class="width50">:- {{user.joiningDate}}</td>
+                                                        </tr>
+                                                        <tr class="altrow">
+                                                            <td>Date Of Birth</td>
+                                                            <td class="width50">:- {{user.dob}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="width50">Username</td>
+                                                            <td class="width50">:- {{user.userName}}</td>
+                                                        </tr>
+                                                        <tr class="altrow">
+                                                            <td>Branch</td>
+                                                            <td class="width50">:- {{user.branchName}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="width50">Department</td>
+                                                            <td class="width50">:-{{user.dapName}}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                                <button class="btn btn-xs"
+                                                    style="font-size: 13px; background-color:#004C8C!important; color: white;"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                </button>&nbsp;&nbsp;
+
+
+
+                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Update User Profile</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <!-- <div class="container box pb-2" > -->
+                                                                <!-- <div class="row"> -->
+
+                                                                <form [formGroup]="updateuserprofile"
+                                                                    class=" col-md-12 col-sm-12 col-xs-12 mt-2">
+                                                                    <div class="container">
+
+                                                                        <div class="form-group row mb-1">
+
+                                                                            <label for="complianceDueDate"
+                                                                                class="col-lg-4 col-4 control-label">First Name
+                                                                                </label>
+                                                                            <div class="col-lg-8 col-md-8 col-8 ">
+                                                                                <input type="text"
+                                                                                    formControlName="firstname"
+                                                                                    [(ngModel)]="user.firstName"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-1">
+
+                                                                            <label for="complianceDueDate"
+                                                                                class="col-lg-4 col-4 control-label">Middle Name</label>
+                                                                            <div class="col-lg-8 col-md-8 col-8 ">
+                                                                                <input type="text"
+                                                                                    formControlName="middlename"
+                                                                                    [(ngModel)]="user.middleName"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-1">
+
+                                                                            <label for="complianceDueDate"
+                                                                                class="col-lg-4 col-4 control-label">Last Name
+                                                                                </label>
+                                                                            <div class="col-lg-8 col-md-8 col-8 ">
+                                                                                <input type="text"
+                                                                                    formControlName="lastname"
+                                                                                    [(ngModel)]="user.lastName"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-1">
+
+                                                                            <label for="complianceDueDate"
+                                                                                class="col-lg-4 col-4 control-label">Contact No.</label>
+                                                                            <div class="col-lg-8 col-md-8 col-8 ">
+                                                                                <input type="text"
+                                                                                    formControlName="constno"
+                                                                                    [(ngModel)]="user.contactNo"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-1">
+
+                                                                            <label for="complianceDueDate"
+                                                                                class="col-lg-4 col-4 control-label">Date Of Birth</label>
+                                                                            <div class="col-lg-8 col-md-8 col-8 ">
+                                                                                <input type="date"
+                                                                                    formControlName="dateofbirth"
+                                                                                    [(ngModel)]="user.dob"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </form>
+                                                                
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary" (click)="updateUserProfile()">Update</button>
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

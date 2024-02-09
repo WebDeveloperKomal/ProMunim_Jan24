@@ -126,23 +126,30 @@
                                                         class="col-lg-2 col-4   col-form-label mr-5">Description</label>
                                                 </div>
 
+
+
+
+
                                                 <div class="form-check mb-3 was-validated col-md-6 col-sm-6 col-xs-12 ">
 
-                                                    <label class="form-check-label" for="isnxt">Is Next
-                                                        Date:</label>
-                                                    <input class="form-check-input" type="checkbox"
-                                                        formControlName="isnxt" [(ngModel)]="lead.isnxt" id="myCheck"
-                                                        name="isnxt" required>
-                                                    <div class="valid-feedback ">
-                                                        <div class="form-group row mb-3">
-                                                            <div class="form-floating col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="date" [(ngModel)]="lead.nextVisitDate"
-                                                                    style="width: 100%;"
-                                                                    formControlName="nextVisitDate" class="form-control"
-                                                                    id="complianceDueDate">
-                                                                <label for="nextVisitDate"
-                                                                    class="col-lg-2 col-4 col-form-label ml-2">Next
-                                                                    Visit Date:</label>
+                                                    <div class="form-check mb-3 was-validated">
+
+                                                        <label class="form-check-label" for="isnxt">Is Next
+                                                            Date:</label>
+                                                        <input class="form-check-input" type="checkbox"
+                                                            formControlName="isnxt" [(ngModel)]="lead.isnxt"
+                                                            id="myCheck" name="isnxt" required>
+
+                                                        <div class="valid-feedback ">
+                                                            <div class="form-group row mb-3">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" [(ngModel)]="lead.nextVisitDate"
+                                                                        formControlName="nextVisitDate"
+                                                                        class="form-control" id="complianceDueDate">
+                                                                    <label for="nextVisitDate"
+                                                                        class="col-lg-2 col-4 col-form-label ml-2">Next
+                                                                        Visit Date:</label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -175,13 +182,13 @@
 
                                             <div class="text-center mt-1 align-middle">
                                                 <button class="btn-info  m-lg-4 m-4 w-25"
-                                                style="height: 36px; width: 163px; font-size: 10px; border-radius: 2rem;" (click)="onSubmit1()"
-                                                    ng-click="saveVisit()" type="submit">
+                                                    style="height: 36px; width: 163px; font-size: 10px; border-radius: 2rem;"
+                                                    (click)="onSubmit1()" ng-click="saveVisit()" type="submit">
                                                     Submit
                                                 </button>
 
                                                 <button class="btn-info m-lg-4 m-4 w-25"
-                                                style="height: 36px; width: 163px; font-size: 10px; border-radius: 2rem;">
+                                                    style="height: 36px; width: 163px; font-size: 10px; border-radius: 2rem;">
                                                     Cancal
                                                 </button>
                                             </div>

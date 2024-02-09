@@ -129,7 +129,7 @@ form {
 label {
     color: #393939;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     /* font-weight: 00; */
     /* font: 14px 'Open Sans'; */
 }
@@ -209,7 +209,7 @@ label {
 /* Increase the text size for select fields */
 .select {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     /* Adjust the value to your preferred text size */
 }
 

@@ -53,14 +53,14 @@
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    background-color: #fff !important;
+    /* background-color: #fff !important; */
     border: 1px solid #ddd !important;
     background-color: transparent;
     line-height: 1.42857143;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 5px;
     padding: 25px;
-    font-size: 14px;
+    font-size: 10px;
     font-family: "Comfortaa", sans-serif;
 }
 
@@ -68,7 +68,9 @@ table {
 .table th {
     background-color: #f9f9f9 !important;
     font-family: "Comfortaa", sans-serif;
+
 }
+
 
 .table-bordered td,
 .table-bordered th {
@@ -112,7 +114,7 @@ table {
 }
 
 .dataTables_wrapper {
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .dataTables_paginate a.paginate_button {
@@ -131,10 +133,12 @@ form {
 label {
     color: #393939;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     /* font-weight: 00; */
     /* font: 14px 'Open Sans'; */
 }
+
+
 
 .btn-info,
 .btn-info.focus,
@@ -169,7 +173,7 @@ label {
 .btn-info {
     color: #fff;
     background-color: #5bc0de;
-    border-color: #46b8da;
+    /* border-color: #46b8da; */
 }
 
 .btn {
@@ -182,7 +186,7 @@ label {
     cursor: pointer;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: 6px 12px;
+    padding: 2px 12px;
     font-size: 14px;
     /* line-height: 1.42857143; */
     /* border-radius: 4px; */
@@ -205,7 +209,7 @@ label {
 .form-select,
 .form-control {
     font-weight: 400;
-    font-size: 13px;
+    font-size: 10px;
     /* Adjust the value to your preferred text size */
 }
 
@@ -235,7 +239,7 @@ label {
 .open>.btn-info.dropdown-toggle:hover {
     background-color: #4F99C6 !important;
     border-color: #004C8C;
-    border: 5px solid #004C8C;
+    /* border: 5px solid #004C8C; */
 
 }
 
@@ -284,12 +288,12 @@ label {
     border-radius: 0 !important;
     border-color: #3BB161;
     background-color: #fff;
-    color: #3BB161;
+    color: #004C8C;
     /* margin-right: -1px; */
     line-height: 18px;
     position: relative;
-    font-size: 14px;
-    padding: 3px;
+    font-size: 10px;
+    padding: 15px;
 }
 
 .nav-tabs>li.active>a,
@@ -307,10 +311,10 @@ label {
 .nav-tabs>li.active>a:hover {
     color: #FFF;
     border-color: #3BB161 #3BB161 transparent;
-    border-top: 2px solid #3BB161;
+    border-top: 5px solid #3BB161;
     background-color: #3BB161;
     z-index: 1;
-    line-height: 18px;
+    line-height: 25px;
     margin-top: -1px;
     box-shadow: 0 -2px 3px 0 rgba(0, 0, 0, .15);
 }
@@ -320,7 +324,7 @@ h4 {
 }
 
 .panel-title {
-    font-size: 16px;
+    font-size: 10px;
     padding: 10px;
     color: inherit;
 }
@@ -345,5 +349,43 @@ table.customerssummarystats {
 
 .sumrybox table tbody tr td {
     padding: 3px;
-    font-size: 11px;
+    font-size: 10px;
 }
+
+th,td{
+    color: #004C8C;
+}
+
+label {
+    color:  #004c8c !important;
+    font-weight: 600;
+    width: auto;
+    /* left: 15px; */
+    /* top: 5px; */
+}
+
+select ~ label{
+    color:  #004c8c;
+    font-weight: 600;
+    width: auto;
+    /* left: 15px; */
+    /* top: 5px; */
+}
+
+
+input , select{
+    font-size: small;
+    border-radius: 10px;
+}
+
+#td{
+   color:#151515;
+}
+
+
+
+#Dis{
+ left: 12px;
+    /* top: 5px; */
+}
+

@@ -79,7 +79,7 @@ label{
 .btn-info {
     color: #fff;
     background-color: #5bc0de;
-    border-color: #46b8da;
+    /* border-color: #46b8da; */
 }
 .btn {
     display: inline-block;
@@ -113,7 +113,7 @@ label{
 
 .form-control , .form-select {
     font-weight: 400;
-    font-size: 13px; 
+    font-size: 10px; 
     /* line-height: 1; */
 }
 
@@ -129,7 +129,7 @@ label{
 /* Increase the text size for select fields */
 .select {
     font-weight: 400;
-    font-size: 15px; /* Adjust the value to your preferred text size */
+    font-size: 10px; /* Adjust the value to your preferred text size */
 }
 
 
@@ -240,7 +240,7 @@ label {
     color:  #004c8c !important;
     font-weight: 600;
     width: auto;
-    
+    font-size: 10px;
     /* left: 15px; */
     /* top: 5px; */
 }
@@ -251,26 +251,42 @@ label {
     width: auto;
     /* left: 15px; */
     top: 17px;
+    font-size: 10px;
 }
 
 #as1name{
      left: 13px;
      /* top: 17px; */
+     font-size: 10px;
 }
 
 select ~ label , option{
     color:  #004c8c;
     font-weight: 600;
     width: auto;
+    font-size: 10px;
 }
 
 
 input , select{
-    font-size: small;
-    border-radius: 12px;
+    font-size: 10px;
 }
 
 
 th,td{
     color: #004C8C;
 }
+
+#photo{
+    height: 100%;
+}
+
+@media screen and (max-width: 820px) {
+    #photo {
+           height: 200%;
+    
+    }
+  }
+
+
+  
